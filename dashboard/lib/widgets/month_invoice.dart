@@ -5,7 +5,7 @@ import 'package:dashborad/widgets/header.dart';
 import 'package:flutter/material.dart';
 
 class MonthInvoice extends StatelessWidget {
-  const MonthInvoice({Key? key}) : super(key: key);
+  const MonthInvoice({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class MonthInvoice extends StatelessWidget {
     double responsiveHeigth = responsiveUtil.getResponsiveHeight(0.42);
 
     return Container(
-        color: Colors.black.withOpacity(0.02),
+        color: Colors.black.withValues(alpha: 0.02 * 255),
         width: responsiveWith,
         height: responsiveHeigth,
         

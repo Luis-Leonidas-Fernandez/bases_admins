@@ -1,5 +1,6 @@
 import 'package:dashborad/blocs/user/auth_bloc.dart';
 import 'package:dashborad/buttons/nueva_cuenta.dart';
+import 'package:dashborad/widgets/alert_screen.dart';
 import 'package:dashborad/widgets/tittle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -8,7 +9,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +31,7 @@ class LoginScreen extends StatelessWidget {
 
 class ColumnTextField extends StatefulWidget {
 
-  const ColumnTextField({Key? key}) : super(key: key);
+  const ColumnTextField({super.key});
 
   @override
   State<ColumnTextField> createState() => _ColumnTextFieldState();
@@ -110,7 +111,16 @@ class _ColumnTextFieldState extends State<ColumnTextField> {
                   
                   
                   // ignore: use_build_context_synchronously
-                  if(registerOk == true && context.mounted == true)  return context.goNamed('dashboard'); 
+                  if(registerOk == true && context.mounted == true){
+                      return context.goNamed('dashboard');
+                  }else{
+                    if(!context.mounted) return;
+                    mostrarAlerta(
+                        context,
+                        'Login incorrecto',
+                        'Revise sus credenciales nuevamente',
+                      );
+                  }   
                      
                 
 
@@ -151,7 +161,7 @@ class _ColumnTextFieldState extends State<ColumnTextField> {
 class TextContainer extends StatelessWidget {
 
   final Widget child;
-  const TextContainer({Key? key, required this.child}) : super(key: key);
+  const TextContainer({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

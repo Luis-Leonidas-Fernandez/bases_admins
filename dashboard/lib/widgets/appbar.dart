@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 
 class AppBarDesing extends StatelessWidget {
-  const AppBarDesing({Key? key}) : super(key: key);
+  const AppBarDesing({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -14,17 +14,24 @@ import 'package:dashborad/layout/responsive_layout.dart';
 import 'package:dashborad/screens/screens.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:go_router/go_router.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:url_strategy/url_strategy.dart';
 import 'blocs/blocs.dart';
 import 'package:path_provider/path_provider.dart';
+
+// Import condicional que evita errores en Android al compilar lógica Web
+import 'utils/url_strategy_stub.dart'
+    if (dart.library.html) 'utils/url_strategy_web.dart';
 
 
 
 void main() async {
-   
-   setPathUrlStrategy();
+
+ 
+  // Aplica estrategia de URL solo si se está en Web (condicional)
+  configureAppUrlStrategy();   
+  
    WidgetsFlutterBinding.ensureInitialized();
    GoRouter.optionURLReflectsImperativeAPIs = true;
    await StorageService.configurePrefs();

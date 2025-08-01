@@ -11,7 +11,7 @@ import 'package:google_fonts/google_fonts.dart';
 class BasePageMobile extends StatefulWidget {
 
 
-  const BasePageMobile({Key? key}) : super(key: key);
+  const BasePageMobile({super.key});
 
   @override
   State<BasePageMobile> createState() => _BasePageState(); 
@@ -45,7 +45,7 @@ class _BasePageState extends State<BasePageMobile> {
 class MapZonas extends StatefulWidget {
  
   final Size size;
-  const MapZonas({Key? key, required this.size}) : super(key: key);
+  const MapZonas({super.key, required this.size});
 
   @override
   State<MapZonas> createState() => _MapZonasState();
@@ -93,7 +93,7 @@ class _MapZonasState extends State<MapZonas> {
 class TittleAddZona extends StatelessWidget {
   
   final Size size;
-  const TittleAddZona({Key? key, required this.size}) : super(key: key);
+  const TittleAddZona({super.key, required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -126,7 +126,7 @@ class TittleAddZona extends StatelessWidget {
 class SelectArea extends StatelessWidget {
 
   final Size size;
-  const SelectArea({Key? key, required this.size}) : super(key: key);
+  const SelectArea({super.key, required this.size});
 
   @override
   Widget build(BuildContext context) {
@@ -230,7 +230,7 @@ class ButtonGoHome extends StatelessWidget {
 
  
 
-  const ButtonGoHome({Key? key, }) : super(key: key);
+  const ButtonGoHome({super.key, });
   
 
 
@@ -295,7 +295,7 @@ class ButtonGoHome extends StatelessWidget {
 
 class DroopButton extends StatefulWidget {
 
-  const DroopButton({Key? key}) : super(key: key);
+  const DroopButton({super.key});
 
   @override
   State<DroopButton> createState() => _DroopButtonState();
@@ -352,14 +352,12 @@ class _DroopButtonState extends State<DroopButton> {
                               
            
                     final value = {"zonaName": a, "base": dropdownValue, "ubicacion": ubicacion}; 
-                    debugPrint("value: $value");
+                  
 
                     final data = BaseModel.fromJson(value);
-                    final result = data.toMap();
+                    //final result = data.toMap();
+                                   
                     
-                    debugPrint("data: $result");
-         
-           
                     baseBloc.add(AddBaseEvent(data));
                     Future.delayed(const Duration(seconds: 10)); 
                     
@@ -400,7 +398,7 @@ class _DroopButtonState extends State<DroopButton> {
 
 class DroopButtonB extends StatefulWidget {
 
-  const DroopButtonB({Key? key}) : super(key: key);
+  const DroopButtonB({super.key});
 
   @override
   State<DroopButtonB> createState() => _DroopButtonBState();
@@ -455,8 +453,6 @@ class _DroopButtonBState extends State<DroopButtonB> {
                     final value = {"zonaName": b, "base": dropdownValue , "ubicacion": ubicacion}; 
                     final data = BaseModel.fromJson(value);
          
-                    debugPrint("value: $value");
-                    debugPrint("data: $data");
          
            
                     baseBloc.add(AddBaseEvent(data));
@@ -496,7 +492,7 @@ class _DroopButtonBState extends State<DroopButtonB> {
 
 class DroopButtonC extends StatefulWidget {
 
-  const DroopButtonC({Key? key}) : super(key: key);
+  const DroopButtonC({super.key});
 
   @override
   State<DroopButtonC> createState() => _DroopButtonCState();
@@ -553,8 +549,6 @@ class _DroopButtonCState extends State<DroopButtonC> {
                     final value = {"zonaName": c, "base": dropdownValue, "ubicacion": ubicacion}; 
                     final data = BaseModel.fromJson(value);
          
-                    debugPrint("value: $value");
-                    debugPrint("data: $data");
          
            
                     baseBloc.add(AddBaseEvent(data));
@@ -594,7 +588,7 @@ class _DroopButtonCState extends State<DroopButtonC> {
 
 class DroopButtonD extends StatefulWidget {
 
-  const DroopButtonD({Key? key}) : super(key: key);
+  const DroopButtonD({super.key});
 
   @override
   State<DroopButtonD> createState() => _DroopButtonDState();
@@ -649,8 +643,6 @@ class _DroopButtonDState extends State<DroopButtonD> {
                     final value = {"zonaName": d, "base": dropdownValue, "ubicacion": ubicacion}; 
                     final data = BaseModel.fromJson(value);
          
-                    debugPrint("value: $value");
-                    debugPrint("data: $data");
          
            
                     baseBloc.add(AddBaseEvent(data));
@@ -690,7 +682,7 @@ class _DroopButtonDState extends State<DroopButtonD> {
 
 class DroopButtonE extends StatefulWidget {
 
-  const DroopButtonE({Key? key}) : super(key: key);
+  const DroopButtonE({super.key});
 
   @override
   State<DroopButtonE> createState() => _DroopButtonEState();
@@ -745,8 +737,6 @@ class _DroopButtonEState extends State<DroopButtonE> {
                     final value = {"zonaName": e, "base": dropdownValue, "ubicacion": ubicacion}; 
                     final data = BaseModel.fromJson(value);
          
-                    debugPrint("value: $value");
-                    debugPrint("data: $data");
          
            
                     baseBloc.add(AddBaseEvent(data));
@@ -787,7 +777,7 @@ class _DroopButtonEState extends State<DroopButtonE> {
 
 class DroopButtonF extends StatefulWidget {
 
-  const DroopButtonF({Key? key}) : super(key: key);
+  const DroopButtonF({super.key});
 
   @override
   State<DroopButtonF> createState() => _DroopButtonFState();
@@ -842,8 +832,6 @@ class _DroopButtonFState extends State<DroopButtonF> {
                     final value = {"zonaName": f, "base": dropdownValue, "ubicacion": ubicacion}; 
                     final data = BaseModel.fromJson(value);
          
-                    debugPrint("value: $value");
-                    debugPrint("data: $data");
          
            
                     baseBloc.add(AddBaseEvent(data));

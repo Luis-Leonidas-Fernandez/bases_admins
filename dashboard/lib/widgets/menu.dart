@@ -9,7 +9,7 @@ class Menu extends StatelessWidget {
 
     //SideMenuProvider.closeMenu();
   }
-  const Menu({Key? key}) : super(key: key);
+  const Menu({super.key});
 
   @override
   Widget build(BuildContext context) {

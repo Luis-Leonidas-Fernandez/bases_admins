@@ -4,7 +4,7 @@ import 'package:dashborad/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 class ContentInvoice extends StatelessWidget {
-  const ContentInvoice({Key? key}) : super(key: key);
+  const ContentInvoice({super.key});
 
   @override
   Widget build(BuildContext context) {

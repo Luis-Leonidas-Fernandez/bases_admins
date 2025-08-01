@@ -127,7 +127,7 @@ class AllInvoices extends StatelessWidget {
 }
 
 class WalletAvatar extends StatelessWidget {
-  const WalletAvatar({Key? key}) : super(key: key);
+  const WalletAvatar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -229,7 +229,7 @@ class WalletAvatar extends StatelessWidget {
 }
 
 class TittleAllInvoice extends StatelessWidget {
-  const TittleAllInvoice({Key? key}) : super(key: key);
+  const TittleAllInvoice({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -245,7 +245,7 @@ class TittleAllInvoice extends StatelessWidget {
 }
 
 class NameDriverTop extends StatelessWidget {
-  const NameDriverTop({Key? key}) : super(key: key);
+  const NameDriverTop({super.key});
 
   @override
   Widget build(BuildContext context) {

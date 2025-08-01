@@ -6,7 +6,7 @@ class IconsDriversOnline extends StatelessWidget {
 
 
   final Driver? driver;
-  const IconsDriversOnline({Key? key, this.driver}) : super(key: key);
+  const IconsDriversOnline({super.key, this.driver});
 
   @override
   Widget build(BuildContext context) {

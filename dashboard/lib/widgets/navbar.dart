@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 class MyNavBar extends StatelessWidget {
 
   final AnimationController? controller;
-  const MyNavBar({Key? key, this.controller}) : super(key: key);
+  const MyNavBar({super.key, this.controller});
   
 
   @override

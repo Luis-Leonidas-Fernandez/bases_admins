@@ -1,5 +1,7 @@
 import 'package:dashborad/service/storage_service.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 
 class ApiConfig {
@@ -9,12 +11,17 @@ class ApiConfig {
 
   static void configureDio(){
 
-    _dio.options.baseUrl = 'http://10.0.2.2:3000/api';
+    final String baseUrl = kIsWeb
+        ? const String.fromEnvironment('API_BASE_URL')
+        : dotenv.env['API_BASE_URL'] ?? '';
+
+    _dio.options.baseUrl =  baseUrl;
     _dio.options.contentType = Headers.jsonContentType;
     _dio.options.responseType = ResponseType.json;
     _dio.options.validateStatus = (_) => true; 
     _dio.options.headers = {     
-      'x-token': StorageService.prefs.getString('token') ?? '',   
+       if (StorageService.prefs.getString('token')?.isNotEmpty ?? false)
+        'x-token': StorageService.prefs.getString('token')!,   
            
     };    
 

@@ -21,10 +21,7 @@ class BaseBloc extends Bloc<BaseEvent, BaseState> {
      
     final base = await baseService.createBase(baseSelected, uid);
 
-    final result = base.toString();
-
-    // ignore: avoid_print
-    print("BASE CREADA: $result");
+      
 
     if(base is BaseModel){
 

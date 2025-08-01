@@ -80,6 +80,7 @@ class Data {
 }
 
 class Driver {
+    String? id;
     String? email;
     String? nombre;
     String? apellido;
@@ -99,6 +100,7 @@ class Driver {
     List<String>? cupon;
 
     Driver({
+        this.id,
         this.email,
         this.nombre,
         this.apellido,
@@ -123,6 +125,7 @@ class Driver {
     String toJson() => json.encode(toMap());
 
     factory Driver.fromMap(Map<String, dynamic> json) => Driver(
+        id: json["_id"] ?? "",
         email: json["email"] ?? "",
         nombre: json["nombre"] ?? "",
         apellido: json["apellido"] ?? "",
@@ -143,6 +146,7 @@ class Driver {
     );
 
     Map<String, dynamic> toMap() => {
+        "id": id ?? "",
         "email": email ?? "",
         "nombre": nombre ?? "",
         "apellido": apellido ?? "",

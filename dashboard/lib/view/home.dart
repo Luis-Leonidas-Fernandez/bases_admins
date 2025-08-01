@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget {
-  const Home({Key? key}) : super(key: key);
+  const Home({super.key});
 
   @override
   State<Home> createState() => _HomeState();
@@ -30,27 +30,32 @@ class _HomeState extends State<Home> {
   @override
   void dispose() {
     super.dispose();
-    driversBloc?.stopLoadingDriverBase();
     driversBloc?.stopPeriodicTasck();
   }
 
   @override
   Widget build(BuildContext context) {
-    final driverBloc = BlocProvider.of<DriversBloc>(context);
+    
     final size = MediaQuery.of(context).size;
 
-    return StreamBuilder(
-        stream: driverBloc.driverBaseStream,
-        builder: (context, AsyncSnapshot<DriversModel> snapshot) {
-          final data =
-              snapshot.data?.data ?? driverBloc.state.driversModel?.data;
+    return BlocBuilder<DriversBloc, DriversState>(
+           builder: (context, state) {
+           final data = state.driversModel?.data;
 
-          if (size.width < 856) {
-            return mobileBody(size, data);
-          } else {
-            return desktopAndWeb(size, data);
-          }
-        });
+          if (state.driversModel == null || data == null) {
+           return const Center(
+            child: CircularProgressIndicator(),
+           );
+         }
+
+         if (size.width < 856) {
+          return mobileBody(size, data);
+        } else {
+          return desktopAndWeb(size, data);
+        }
+       },
+      );
+
   }
 
   Widget desktopAndWeb(Size size, Data? data) {

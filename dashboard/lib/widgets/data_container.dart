@@ -1,13 +1,13 @@
-
-
 import 'package:dashborad/constants/constants.dart';
 import 'package:dashborad/models/drivers.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
 
 class DataContainer extends StatelessWidget {
 
   final Data? data;
-  const DataContainer({Key? key, this.data}) : super(key: key);
+  const DataContainer({super.key, this.data});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class DataContainer extends StatelessWidget {
                 constraints: BoxConstraints(minWidth: size.width),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.vertical,
-                  child: tableContent(size, data),
+                  child: _tableContent( context,size, data),
                 ), 
                 ) 
 
@@ -42,7 +42,7 @@ class DataContainer extends StatelessWidget {
   );
 }
 
-Widget tableContent(Size size, Data? data){
+Widget _tableContent( BuildContext context,Size size, Data? data){
  
   
   final List<Driver> drivers = data?.drivers ?? [];
@@ -63,9 +63,15 @@ Widget tableContent(Size size, Data? data){
     
       ], rows: drivers
       .map(
-        (driver) => DataRow(cells: [
+        (driver) => DataRow(
+          onSelectChanged: (_) {
+            if (driver.id != null && driver.id!.isNotEmpty) {
+              context.go('/dashboard/driver/${driver.id}');
+            }
+          },
+          cells: [
   
-          DataCell(Text(driver.apellido?? "", style: TextStyle(color: containerColor),)),
+           DataCell(Text(driver.apellido?? "", style: TextStyle(color: containerColor),)),
            DataCell(Text(driver.nombre ?? "", style: TextStyle(color: containerColor))),
            DataCell(Text(driver.vehiculo ?? "", style: TextStyle(color: containerColor))),
            DataCell(Text(driver.viajes.toString(), style: TextStyle(color: containerColor))),
@@ -75,7 +81,8 @@ Widget tableContent(Size size, Data? data){
            DataCell(Text(driver.modelo?? "", style: TextStyle(color: containerColor))),
            DataCell(Text(driver.status ?? "", style: TextStyle(color: containerColor))),
   
-        ])
+        ],
+     )
         
         ).toList(),
       

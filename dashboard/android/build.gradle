@@ -1,13 +1,16 @@
 buildscript {
-    ext.kotlin_version = '1.7.10'
+    ext.kotlin_version = '1.8.22'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
+        classpath 'com.android.tools.build:gradle:8.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
+
+    
 }
 
 allprojects {
@@ -23,6 +26,11 @@ subprojects {
 }
 subprojects {
     project.evaluationDependsOn(':app')
+}
+
+// 🔧 Fix: Asegura que Kotlin use Java 17
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+    kotlin.jvmToolchain(17)
 }
 
 tasks.register("clean", Delete) {

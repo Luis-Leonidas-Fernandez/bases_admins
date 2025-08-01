@@ -3,6 +3,7 @@ import 'package:dashborad/blocs/blocs.dart';
 import 'package:dashborad/view/base_view.dart';
 import 'package:dashborad/view/base_view_mobile.dart';
 import 'package:dashborad/view/dashboard.dart';
+import 'package:dashborad/view/driver_history.dart';
 import 'package:dashborad/view/factura.dart';
 import 'package:dashborad/view/home.dart';
 import 'package:dashborad/view/login.dart';
@@ -159,56 +160,30 @@ late final GoRouter router = GoRouter(
             }
             );
 
-          } 
-          
+          }           
         ), 
+        
+        GoRoute(
+          name: 'driver-history',
+          path: '/dashboard/driver/:id',          
+          pageBuilder: (context, state) {
+           final id = state.pathParameters['id']!;
+           return CustomTransitionPage(
+            transitionDuration: const Duration(seconds: 1),
+            child: MyDashborad(child: TravelHistoryPage(driverId: id)),
+            transitionsBuilder: (context, animation, secondaryAnimation, child){
+              return FadeTransition(
+                opacity: CurveTween(curve: Curves.easeInCirc).animate(animation),
+                child: child,
+                );
 
-           
+            }
+            );
+          }           
+        ),
+
+
+       ], 
      
-
-   ],
-   
-   /* redirect: (context, state) {
-     
-     final String? user       = auth!.state.admin?.uid;    
-     final bool loggingIn     = state.matchedLocation == '/login';
-     final bool registerIn    = state.matchedLocation == '/register';
-     
-
-     if(user == null && loggingIn == true) {
-
-      // ignore: avoid_print
-      print("login");
-
-      return '/login';
-     }
-
-     if(user == null && registerIn == true){
-
-
-      // ignore: avoid_print
-      print("register");
-
-      return '/register';
-     }
-
-     if(user != null) {
-
-        // ignore: avoid_print
-     print("dashboard: $user");
-      return '/dashboard';
-
-     }     
-   
-     
-     
-    
-     return null;
-   }, */
-    
-      
-  );
-  
-
-
-}
+      );
+  }

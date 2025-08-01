@@ -13,10 +13,10 @@ class DriversEvent extends Equatable{
 class GetDriverAndBaseUserEvent extends DriversEvent{}
 
 
-class AddOrderUserEvent extends DriversEvent{
+class UpdateDriversModelEvent extends DriversEvent{
 
   final DriversModel driversModel;
-  const AddOrderUserEvent(this.driversModel);
+  const UpdateDriversModelEvent(this.driversModel);
 
 }
 class OnClearStateEvent extends DriversEvent{

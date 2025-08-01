@@ -93,7 +93,7 @@ class LoginView extends StatelessWidget {
 class _Welcome extends StatelessWidget {
 
   final Size? size;
-  const _Welcome({Key? key, this.size}) : super(key: key);
+  const _Welcome({this.size});
 
   
 

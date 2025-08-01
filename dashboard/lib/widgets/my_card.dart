@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 class MyCard extends StatelessWidget {
 
   final Data? data;
-  const MyCard({Key? key, this.data}) : super(key: key);
+  const MyCard({super.key, this.data});
 
   @override
   Widget build(BuildContext context) {

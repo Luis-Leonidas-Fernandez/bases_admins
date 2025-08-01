@@ -124,7 +124,7 @@ class DriverAvatar extends StatelessWidget {
 
 
   final Data? data;
-  const DriverAvatar({Key? key, this.data}) : super(key: key);
+  const DriverAvatar({super.key, this.data});
   
   
 
@@ -181,7 +181,7 @@ class DriverAvatar extends StatelessWidget {
 }
 
 class TittleTopDrivers extends StatelessWidget {
-  const TittleTopDrivers({Key? key}) : super(key: key);
+  const TittleTopDrivers({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -197,7 +197,7 @@ class TittleTopDrivers extends StatelessWidget {
 }
 
 class NameDriverTop extends StatelessWidget {
-  const NameDriverTop({Key? key}) : super(key: key);
+  const NameDriverTop({super.key});
 
   @override
   Widget build(BuildContext context) {

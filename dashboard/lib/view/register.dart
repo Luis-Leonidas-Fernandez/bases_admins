@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class RegisterScreen extends StatelessWidget {
 
 class ColumnTextField extends StatefulWidget {
 
-  const ColumnTextField({Key? key}) : super(key: key);
+  const ColumnTextField({super.key});
 
   @override
   State<ColumnTextField> createState() => _ColumnTextFieldState();
@@ -117,9 +117,7 @@ class _ColumnTextFieldState extends State<ColumnTextField> {
                   final registerOk = await authBloc.initRegister(nameCtrl.text.toString(), emailCtrl.text.toString(),
                   passCtrl.text.toString());
                   
-                  // ignore: avoid_print
-                  print("register ok: $registerOk");
-                  
+                 
                   
                   // ignore: use_build_context_synchronously
                   if(registerOk == true && context.mounted == true)  return context.goNamed('dashboard'); 
@@ -163,7 +161,7 @@ class _ColumnTextFieldState extends State<ColumnTextField> {
 class TextContainer extends StatelessWidget {
 
   final Widget child;
-  const TextContainer({Key? key, required this.child}) : super(key: key);
+  const TextContainer({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

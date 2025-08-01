@@ -6,9 +6,9 @@ class TextSeparator extends StatelessWidget {
 
   final String text;
   const TextSeparator({
-  Key? key,
+  super.key,
   required this.text
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class TextSeparator extends StatelessWidget {
       child: Text( 
         text,
         style: GoogleFonts.roboto(
-          color: Colors.white.withOpacity(0.3),
+          color: Colors.white.withValues(alpha: 0.3 * 255),
           fontSize: 12
         ),
       ),

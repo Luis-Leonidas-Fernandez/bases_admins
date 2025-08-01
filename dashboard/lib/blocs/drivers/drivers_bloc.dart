@@ -12,14 +12,10 @@ part 'drivers_state.dart';
 class DriversBloc extends HydratedBloc<DriversEvent, DriversState> {
 
   DriversAndBaseService driverBaseService;
-  AuthBloc authBloc;
-  StreamSubscription<DriversModel>? myBaseStream;
+  AuthBloc authBloc; 
   Timer? timer;
 
-  final StreamController<DriversModel> _driverBaseController =
-      StreamController.broadcast();
-  Stream<DriversModel> get driverBaseStream => _driverBaseController.stream;
-
+ 
   DriversBloc({required this.driverBaseService, required this.authBloc})
       : super(const DriversState()) {
     //Push Events
@@ -27,7 +23,7 @@ class DriversBloc extends HydratedBloc<DriversEvent, DriversState> {
     //clear data
     on<OnClearStateEvent>((event, emit) => emit(const DriverInitialState()));
     // get data
-    on<AddOrderUserEvent>((event, emit) {
+    on<UpdateDriversModelEvent>((event, emit) {
       emit(state.copyWith(
         driversModel: event.driversModel,
       ));
@@ -62,25 +58,25 @@ class DriversBloc extends HydratedBloc<DriversEvent, DriversState> {
   }
 
   void getDriversAndBases() {
+    
+    stopPeriodicTasck();
 
     timer = Timer.periodic(const Duration(seconds: 3), (_) async {
 
-      if (authBloc.state.admin == null) return stopPeriodicTasck();
+      if (authBloc.state.admin == null) {
+          stopPeriodicTasck();
+          add(const OnClearStateEvent());
+           return;
+         }
 
-      //try {
-        final resp = await driverBaseService.getDriversAndBase();
+      
+        final resp = await driverBaseService.getDriversAndBase();        
         
-        // ignore: avoid_print
-        //print("response driver model : $resp");
-
         if (resp.ok == true) {
-          _driverBaseController.add(resp);
-          add(AddOrderUserEvent(resp));
+          
+          add(UpdateDriversModelEvent(resp));
         }
-      //} catch (e) {
-        // ignore: avoid_print
-        //print("ERROR IN BLOC: $e");
-      //}
+
     });
   }
 
@@ -93,17 +89,11 @@ class DriversBloc extends HydratedBloc<DriversEvent, DriversState> {
     getDriversAndBases();
   }
 
-  void stopLoadingDriverBase() {
-    _driverBaseController.close();
-    myBaseStream?.cancel();
-  }
+
 
   @override
   Future<void> close() {
-    stopPeriodicTasck();
-    stopLoadingDriverBase();
-    timer?.cancel();
-    timer = null;
+    stopPeriodicTasck();  
     return super.close();
   }
 }
