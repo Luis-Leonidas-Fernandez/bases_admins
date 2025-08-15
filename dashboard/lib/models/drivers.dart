@@ -23,6 +23,16 @@ class DriversModel {
         "ok": ok,
         "data": data!.toMap(),
     };
+
+    DriversModel copyWith({
+    bool? ok,
+    Data? data,
+  }) {
+    return DriversModel(
+      ok: ok ?? this.ok,
+      data: data ?? this.data,
+    );
+  }
 }
 
 class Data {
@@ -77,7 +87,33 @@ class Data {
         "ubicacion":  ubicacion?.toMap(),
         "drivers": drivers == null ? "" : List<dynamic>.from(drivers!.map((x) => x.toMap())),
     };
+
+   Data copyWith({
+    String? id,
+    int? base,
+    int? viajes,
+    String? adminId,
+    String? zonaName,
+    Ubicacion? ubicacion,
+    List<Driver>? drivers,
+  }) {
+    return Data(
+      id: id ?? this.id,
+      base: base ?? this.base,
+      viajes: viajes ?? this.viajes,
+      adminId: adminId ?? this.adminId,
+      zonaName: zonaName ?? this.zonaName,
+      ubicacion: ubicacion ?? this.ubicacion,
+      drivers: drivers ?? this.drivers,
+    );
+  }
+
 }
+
+
+
+
+
 
 class Driver {
     String? id;
@@ -135,7 +171,7 @@ class Driver {
         modelo: json["modelo"] ?? "",
         patente: json["patente"] ?? "",
         licencia: json["licencia"] ?? "",
-        online: json["online"] ?? false,
+        online: json.containsKey('online') ? (json["online"] as bool?) : null,
         role: json["role"] ?? "",
         order: json["order"] ?? "",
         status: json["status"] ?? "",
@@ -193,3 +229,26 @@ class Ubicacion {
     };
 }
 
+class DriversState {
+  final DriversModel? driversModelOnline;
+  final DriversModel? enableDriverModel;
+  final bool isLoading;
+
+  const DriversState({
+    this.driversModelOnline,
+    this.enableDriverModel,
+    this.isLoading = false,
+  });
+
+  DriversState copyWith({
+    DriversModel? driversModelOnline,
+    DriversModel? enableDriverModel,
+    bool? isLoading,
+  }) {
+    return DriversState(
+      driversModelOnline: driversModelOnline ?? this.driversModelOnline,
+      enableDriverModel: enableDriverModel?? this.enableDriverModel,
+      isLoading: isLoading ?? this.isLoading,
+    );
+  }
+}

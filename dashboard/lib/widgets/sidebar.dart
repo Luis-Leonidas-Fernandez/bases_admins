@@ -43,6 +43,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
                 buildItemHome(context, menuBloc: menuBloc),
                 buildGetTaxe(context, menuBloc: menuBloc),
                 buildRegisterBase(context, menuBloc: menuBloc),
+                buildEnableDrivers(context, menuBloc: menuBloc),
                 //const SizedBox(height: 10),
                 buildLogOut(context,
                     driverBloc: driverBloc, authBloc: authBloc, menuBloc: menuBloc)
@@ -300,3 +301,46 @@ void logOut(AuthBloc authBloc, DriversBloc driversBloc, MenuBloc menuBloc) {
   //menuBloc.stopController();
   driversBloc.stopPeriodicTasck();
 }
+
+Widget buildEnableDrivers(context, {required MenuBloc menuBloc}) {
+  return Container(
+    height: 80,
+    width: 190,
+    color: Colors.transparent,
+    child: Stack(
+      children: [
+        const SizedBox(height: 15),
+        TextButton(
+          onPressed: () {
+            // Navega a tu página de habilitación de conductores
+            // Ajusta el path si en tu GoRouter usaste otro:
+            GoRouter.of(context).push('/dashboard/drivers/enable');
+            menuBloc.add(const OnIsCloseSideBarEvent());
+          },
+          child: Row(
+            children: [
+              const Center(
+                child: Icon(
+                  Icons.verified_user, // o el ícono que prefieras
+                  color: Colors.white,
+                  size: 28.0,
+                ),
+              ),
+              const SizedBox(width: 15),
+              Align(
+                alignment: const Alignment(-0.2, 0.0),
+                child: Text(
+                  "H A B I L I T A R",
+                  style: GoogleFonts.roboto(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
+  );
+}
+

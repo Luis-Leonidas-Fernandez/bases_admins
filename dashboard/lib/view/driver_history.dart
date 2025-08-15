@@ -14,6 +14,7 @@ class TravelHistoryPage extends StatefulWidget {
 }
 
 class _TravelHistoryPageState extends State<TravelHistoryPage> {
+  
   late Future<TravelModel?> _futureViajes;
 
   @override

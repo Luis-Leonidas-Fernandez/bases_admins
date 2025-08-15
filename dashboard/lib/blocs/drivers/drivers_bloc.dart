@@ -25,21 +25,36 @@ class DriversBloc extends HydratedBloc<DriversEvent, DriversState> {
     // get data
     on<UpdateDriversModelEvent>((event, emit) {
       emit(state.copyWith(
-        driversModel: event.driversModel,
+        driversModelOnline: event.driversModelOnline,
+        
       ));
     });
+
+        on<EnableDriversModelEvent>((event, emit) {
+      emit(state.copyWith(
+        enableDriverModel: event.enableDriversModel,
+        
+      ));
+    });
+    //conductor acepta viaje
+    on<EnableDriverRequested>(_enableDriver);
   }
 
   @override
   DriversState? fromJson(Map<String, dynamic> json) {
     try {
-      final data = json;
 
-      final drivers = DriversModel.fromJson(data);
+    final onlineJson = json['driversModelOnline'] as Map<String, dynamic>?;
+    final enableJson = json['enableDriversModel'] as Map<String, dynamic>?;
 
-      final driversState = DriversState(driversModel: drivers);
+    final online = onlineJson == null ? null : DriversModel.fromJson(onlineJson);
+    final enable = enableJson == null ? null : DriversModel.fromJson(enableJson);
 
-      return driversState;
+    return DriversState(
+      driversModelOnline: online,
+      enableDriverModel: enable,
+    );
+
     } catch (e) {
       return null;
     }
@@ -48,13 +63,16 @@ class DriversBloc extends HydratedBloc<DriversEvent, DriversState> {
   @override
   Map<String, dynamic>? toJson(DriversState state) {
 
-    if (state.driversModel?.data != null) {
-      final data = state.driversModel?.toJson();
+    final map = <String, dynamic>{};
 
-      return data;
-    } else {
-      return null;
+    if (state.driversModelOnline != null) {
+    map['driversModelOnline'] = state.driversModelOnline!.toJson();
     }
+    if (state.enableDriverModel != null) {
+    map['enableDriversModel'] = state.enableDriverModel!.toJson();
+    }
+
+  return map.isEmpty ? null : map;
   }
 
   void getDriversAndBases() {
@@ -70,15 +88,49 @@ class DriversBloc extends HydratedBloc<DriversEvent, DriversState> {
          }
 
       
-        final resp = await driverBaseService.getDriversAndBase();        
-        
-        if (resp.ok == true) {
-          
-          add(UpdateDriversModelEvent(resp));
-        }
+        final DriversModel model = await driverBaseService.getDriversAndBase();   
+
+        //filtro los conductores dejando solo los que tiene el campo online en su estructura       
+
+        final all = model.data?.drivers ?? const <Driver>[];
+
+        // Con online (no null)
+        final withOnline = all.where((driver) => driver.online != null).toList();
+
+        // Sin online
+        final withoutOnline = all.where((driver) => driver.online == null).toList();
+
+        // DriversModel con online
+        final driversModelOnline = model.copyWith(
+        data: model.data?.copyWith(drivers: withOnline),
+        );
+
+        // DriversModel sin online
+        final enableDriverModel = model.copyWith(
+        data: model.data?.copyWith(drivers: withoutOnline),
+        );
+
+      if (model.ok == true) {
+        add(UpdateDriversModelEvent(driversModelOnline));
+        add(EnableDriversModelEvent(enableDriverModel));
+      }
 
     });
   }
+
+  //aceptar viaje
+  void _enableDriver(EnableDriverRequested event, Emitter<DriversState> emit) async {
+
+  final idDriver = event.idDriver;  
+  
+  if (idDriver.isNotEmpty) {
+ 
+    // 🔵 Después hacemos la llamada al backend
+   await driverBaseService.putEnableDriver(idDriver); 
+
+
+  }
+}
 
   void stopPeriodicTasck() {
     timer?.cancel();

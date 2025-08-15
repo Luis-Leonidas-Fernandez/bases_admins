@@ -46,6 +46,8 @@ Widget _tableContent( BuildContext context,Size size, Data? data){
  
   
   final List<Driver> drivers = data?.drivers ?? [];
+  // ❓ OPCIÓN A: mostrar solo conductores que TRAEN el campo (existe, sea true o false)
+  final alldrivers = drivers.where((d) => d.online != null).toList();
 
   
 
@@ -61,7 +63,7 @@ Widget _tableContent( BuildContext context,Size size, Data? data){
      DataColumn(label: Expanded(child: Text('MODELO', style: size.width < 858 ? h9 : h10))),
      DataColumn(label: Expanded(child: Text('STATUS', style: size.width < 858 ? h9 : h10))),
     
-      ], rows: drivers
+      ], rows: alldrivers
       .map(
         (driver) => DataRow(
           onSelectChanged: (_) {
@@ -70,7 +72,7 @@ Widget _tableContent( BuildContext context,Size size, Data? data){
             }
           },
           cells: [
-  
+          
            DataCell(Text(driver.apellido?? "", style: TextStyle(color: containerColor),)),
            DataCell(Text(driver.nombre ?? "", style: TextStyle(color: containerColor))),
            DataCell(Text(driver.vehiculo ?? "", style: TextStyle(color: containerColor))),

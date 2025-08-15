@@ -1,5 +1,5 @@
 import 'package:dashborad/blocs/blocs.dart';
-import 'package:dashborad/models/drivers.dart';
+import 'package:dashborad/models/drivers.dart' hide DriversState;
 import 'package:dashborad/widgets/data_container.dart';
 import 'package:dashborad/widgets/my_card.dart';
 import 'package:dashborad/widgets/top_drivers.dart';
@@ -40,9 +40,9 @@ class _HomeState extends State<Home> {
 
     return BlocBuilder<DriversBloc, DriversState>(
            builder: (context, state) {
-           final data = state.driversModel?.data;
+           final data = state.driversModelOnline?.data;
 
-          if (state.driversModel == null || data == null) {
+          if (state.driversModelOnline == null || data == null) {
            return const Center(
             child: CircularProgressIndicator(),
            );

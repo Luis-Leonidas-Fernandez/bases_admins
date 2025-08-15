@@ -4,6 +4,7 @@ import 'package:dashborad/view/base_view.dart';
 import 'package:dashborad/view/base_view_mobile.dart';
 import 'package:dashborad/view/dashboard.dart';
 import 'package:dashborad/view/driver_history.dart';
+import 'package:dashborad/view/enable_driver_page.dart';
 import 'package:dashborad/view/factura.dart';
 import 'package:dashborad/view/home.dart';
 import 'package:dashborad/view/login.dart';
@@ -182,8 +183,23 @@ late final GoRouter router = GoRouter(
           }           
         ),
 
+       
 
+       GoRoute(
+          name: 'drivers-enable',
+          path: '/dashboard/drivers/enable',          
+          pageBuilder: (context, state) => CustomTransitionPage(
+          transitionDuration: const Duration(milliseconds: 350),
+          child: const MyDashborad(child: EnableDriverPage()),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          return FadeTransition(opacity: animation, child: child);
+          },
+         ),      
+        ),
        ], 
      
       );
+
+
+      
   }

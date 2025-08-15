@@ -23,7 +23,7 @@ class ApiConfig {
        if (StorageService.prefs.getString('token')?.isNotEmpty ?? false)
         'x-token': StorageService.prefs.getString('token')!,   
            
-    };    
+    };   
 
   }
 
@@ -72,7 +72,19 @@ class ApiConfig {
   }
    
   
+  static Future put(String path) async {   
 
+    try {
+
+      final resp = await _dio.put(path);     
+             
+       return resp.data;       
+      
+    } catch (e) {   
+              
+      throw ('Error en el GET');
+    }
+  }
   
 
 }
