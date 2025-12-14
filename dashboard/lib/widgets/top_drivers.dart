@@ -1,7 +1,8 @@
-import 'package:dashborad/constants/constants.dart';
-import 'package:dashborad/models/drivers.dart';
-import 'package:dashborad/utils/check_list.dart';
-import 'package:dashborad/widgets/icons_data_online.dart';
+import 'package:transport_dashboard/constants/constants.dart';
+import 'package:transport_dashboard/models/drivers.dart';
+import 'package:transport_dashboard/utils/check_list.dart';
+import 'package:transport_dashboard/widgets/icons_data_online.dart';
+import 'package:transport_dashboard/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 
@@ -189,9 +190,10 @@ class TittleTopDrivers extends StatelessWidget {
       color: Colors.transparent,
       width: 200,
       height: 25,
-      child: Text("Top Mensual Conductores",
-       style: h5,
-       ),
+      child: Text(
+        AppLocalizations.of(context)?.topMonthlyDrivers ?? "Top Mensual Conductores",
+        style: h5,
+      ),
     );
   }
 }
@@ -236,8 +238,10 @@ class DriversOnline extends StatelessWidget {
           color: Colors.transparent,
           height: 20,
           width: 200,
-            child: Text('Conductores Conectados',
-             style: size.width < 869 ? h5 : h5 ),
+            child: Text(
+              AppLocalizations.of(context)?.connectedDrivers ?? 'Conductores Conectados',
+              style: size.width < 869 ? h5 : h5,
+            ),
                     
             ),
         ),

@@ -1,17 +1,19 @@
-import 'package:dashborad/blocs/base/base_bloc.dart';
-import 'package:dashborad/blocs/blocs.dart';
-import 'package:dashborad/view/base_view.dart';
-import 'package:dashborad/view/base_view_mobile.dart';
-import 'package:dashborad/view/dashboard.dart';
-import 'package:dashborad/view/driver_history.dart';
-import 'package:dashborad/view/enable_driver_page.dart';
-import 'package:dashborad/view/factura.dart';
-import 'package:dashborad/view/home.dart';
-import 'package:dashborad/view/login.dart';
-import 'package:dashborad/view/login_view.dart';
-import 'package:dashborad/view/register.dart';
-import 'package:dashborad/widgets/dialog.dart';
-import 'package:dashborad/widgets/error_dialog.dart';
+import 'package:transport_dashboard/blocs/base/base_bloc.dart';
+import 'package:transport_dashboard/blocs/blocs.dart';
+import 'package:transport_dashboard/view/base_view.dart';
+import 'package:transport_dashboard/view/base_view_mobile.dart';
+import 'package:transport_dashboard/view/dashboard.dart';
+import 'package:transport_dashboard/view/driver_history.dart';
+import 'package:transport_dashboard/view/enable_driver_page.dart';
+import 'package:transport_dashboard/view/factura.dart';
+import 'package:transport_dashboard/view/home.dart';
+import 'package:transport_dashboard/view/login.dart';
+import 'package:transport_dashboard/view/login_view.dart';
+import 'package:transport_dashboard/view/register.dart';
+import 'package:transport_dashboard/view/forgot_password.dart';
+import 'package:transport_dashboard/view/reset_password.dart';
+import 'package:transport_dashboard/widgets/dialog.dart';
+import 'package:transport_dashboard/widgets/error_dialog.dart';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -44,6 +46,29 @@ late final GoRouter router = GoRouter(
           name: 'register',
           path: '/register',          
           builder: (context, state) => const LoginView(child:  RegisterScreen()),
+        ),
+        GoRoute(
+          name: 'forgot-password',
+          path: '/forgot-password',
+          builder: (context, state) => const LoginView(child: ForgotPasswordScreen()),
+        ),
+        GoRoute(
+          name: 'reset-password',
+          path: '/reset-password',
+          builder: (context, state) {
+            // El token viene como query parameter desde el email del backend
+            final token = state.uri.queryParameters['token'] ?? '';
+            final isValid = state.uri.queryParameters['valid'] == 'true';
+            final error = state.uri.queryParameters['error'];
+            
+            return LoginView(
+              child: ResetPasswordScreen(
+                token: token,
+                isValid: isValid,
+                error: error,
+              ),
+            );
+          },
         ),
 
         GoRoute(

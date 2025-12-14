@@ -1,6 +1,8 @@
-import 'package:dashborad/blocs/blocs.dart';
-import 'package:dashborad/connection/log_out.dart';
-import 'package:dashborad/constants/constants.dart';
+import 'package:transport_dashboard/blocs/blocs.dart';
+import 'package:transport_dashboard/connection/log_out.dart';
+import 'package:transport_dashboard/constants/constants.dart';
+import 'package:transport_dashboard/widgets/language_selector.dart';
+import 'package:transport_dashboard/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -44,7 +46,12 @@ class _SideBarMenuState extends State<SideBarMenu> {
                 buildGetTaxe(context, menuBloc: menuBloc),
                 buildRegisterBase(context, menuBloc: menuBloc),
                 buildEnableDrivers(context, menuBloc: menuBloc),
-                //const SizedBox(height: 10),
+                const SizedBox(height: 10),
+                const LanguageSelector(
+                  isDropdown: true,
+                  showLabel: true,
+                  padding: EdgeInsets.symmetric(horizontal: 0, vertical: 10),
+                ),
                 buildLogOut(context,
                     driverBloc: driverBloc, authBloc: authBloc, menuBloc: menuBloc)
               ],
@@ -66,25 +73,29 @@ class _SideBarMenuState extends State<SideBarMenu> {
   Widget buildAvatar(Size size, {required AuthBloc authBloc}) {
     final name = authBloc.state.admin?.nombre;
 
-    return Container(
-        color: Colors.transparent,
-        child: Stack(children: [
-          Column(
-            children: [
-              const SizedBox(height: 30),
-              Container(
-                color: Colors.transparent,
-                height: 80.0,
-                width: 80.0,
-                child: const Center(
-                  child: Icon(
-                    Icons.person,
-                    color: Colors.white,
-                    size: 40.0,
+    return BlocBuilder<LanguageBloc, LanguageState>(
+      builder: (context, languageState) {
+        final translatedName = _translateName(name, languageState.locale);
+
+        return Container(
+          color: Colors.transparent,
+          child: Stack(children: [
+            Column(
+              children: [
+                const SizedBox(height: 30),
+                Container(
+                  color: Colors.transparent,
+                  height: 80.0,
+                  width: 80.0,
+                  child: const Center(
+                    child: Icon(
+                      Icons.person,
+                      color: Colors.white,
+                      size: 40.0,
+                    ),
                   ),
                 ),
-              ),
-              Align(
+                Align(
                   alignment: const Alignment(
                     0.0,
                     -0.5,
@@ -95,16 +106,97 @@ class _SideBarMenuState extends State<SideBarMenu> {
                     width: 200.1,
                     child: FittedBox(
                       fit: BoxFit.contain,
-                      child: Text(name ?? '',
-                          style: GoogleFonts.merienda(
-                              color: Colors.white,
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600)),
+                      child: Text(
+                        translatedName,
+                        style: GoogleFonts.merienda(
+                          color: Colors.white,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w600
+                        )
+                      ),
                     ),
-                  ))
-            ],
-          )
-        ]));
+                  )
+                )
+              ],
+            )
+          ]),
+        );
+      },
+    );
+  }
+
+  // Helper function para traducir el nombre manteniendo el formato original
+  String _translateName(String? name, Locale locale) {
+    if (name == null || name.isEmpty) return '';
+    
+    // Mapeo de traducciones (puedes expandir esto según tus necesidades)
+    final translations = {
+      'Usuario': {
+        'en': 'User',
+        'zh': '用户',
+        'ko': '사용자',
+        'ja': 'ユーザー',
+        'it': 'Utente',
+        'es': 'Usuario',
+      },
+      'Administrador': {
+        'en': 'Administrator',
+        'zh': '管理员',
+        'ko': '관리자',
+        'ja': '管理者',
+        'it': 'Amministratore',
+        'es': 'Administrador',
+      },
+      'Admin': {
+        'en': 'Admin',
+        'zh': '管理员',
+        'ko': '관리자',
+        'ja': '管理者',
+        'it': 'Admin',
+        'es': 'Admin',
+      },
+      'Luis': {
+        'en': 'Luis',
+        'zh': '路易斯',
+        'ko': '루이스',
+        'ja': 'ルイス',
+        'it': 'Luis',
+        'es': 'Luis',
+      },
+      // Agrega más traducciones aquí según necesites
+    };
+    
+    // Normalizar el nombre del backend: trim y eliminar espacios múltiples
+    final nameTrimmed = name.trim().replaceAll(RegExp(r'\s+'), ' ');
+    
+    // Buscar si hay una traducción para este nombre (comparar sin importar mayúsculas/minúsculas)
+    final nameKey = translations.keys.where(
+      (key) => nameTrimmed.toLowerCase() == key.toLowerCase(),
+    ).firstOrNull;
+    
+    if (nameKey != null && translations.containsKey(nameKey)) {
+      final localeCode = locale.languageCode;
+      final translated = translations[nameKey]?[localeCode];
+      
+      // Mantener el formato original (mayúsculas/minúsculas)
+      if (translated != null) {
+        // Si el original estaba todo en mayúsculas, mantener las mayúsculas
+        if (nameTrimmed == nameTrimmed.toUpperCase()) {
+          return translated.toUpperCase();
+        }
+        // Si el original empezaba con mayúscula, mantener ese formato
+        if (nameTrimmed.isNotEmpty && 
+            nameTrimmed[0] == nameTrimmed[0].toUpperCase() && 
+            nameTrimmed.substring(1).toLowerCase() == nameTrimmed.substring(1)) {
+          return translated[0].toUpperCase() + translated.substring(1).toLowerCase();
+        }
+        // De lo contrario, devolver la traducción tal cual
+        return translated;
+      }
+    }
+    
+    // Si no hay traducción, retornar el nombre original manteniendo mayúsculas/minúsculas
+    return name;
   }
 
   Widget buildItemHome(context, {required MenuBloc menuBloc}) {
@@ -140,7 +232,8 @@ class _SideBarMenuState extends State<SideBarMenu> {
                     width: 130.1,
                     child: Align(
                         alignment: const Alignment(-0.6, 0.1),
-                        child: Text("H O M E",
+                        child: Text(
+                            AppLocalizations.of(context)?.home ?? "H O M E",
                             style: GoogleFonts.roboto(
                               color: Colors.white,
                             ))),
@@ -189,7 +282,8 @@ class _SideBarMenuState extends State<SideBarMenu> {
     
                           context.go('/login');
                         },
-                        child: Text("S A L I R",                            
+                        child: Text(
+                            AppLocalizations.of(context)?.logout ?? "S A L I R",                            
                             style: GoogleFonts.roboto(
                               color: Colors.white,
                             )),
@@ -231,7 +325,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         0.0,
                       ),
                       child: Text(
-                        "F A C T U R A",
+                        AppLocalizations.of(context)?.invoice ?? "F A C T U R A",
                         style: GoogleFonts.roboto(
                           color: Colors.white,
                         ),
@@ -256,13 +350,13 @@ class _SideBarMenuState extends State<SideBarMenu> {
                 
                 if(size.width > 855) {
 
-                //GoRouter.of(context).push('/dashboard/create/base'); 
-                //menuBloc.add(const OnIsCloseSideBarEvent());
+                GoRouter.of(context).push('/dashboard/create/base'); 
+                menuBloc.add(const OnIsCloseSideBarEvent());
 
                 } else{
 
-                //GoRouter.of(context).push('/dashboard/create/base/mobile'); 
-                //menuBloc.add(const OnIsCloseSideBarEvent()); 
+                GoRouter.of(context).push('/dashboard/create/base/mobile'); 
+                menuBloc.add(const OnIsCloseSideBarEvent()); 
 
 
                 }
@@ -285,7 +379,7 @@ class _SideBarMenuState extends State<SideBarMenu> {
                         0.0,
                       ),
                       child: Text(
-                        "B A S E S",
+                        AppLocalizations.of(context)?.bases ?? "B A S E S",
                         style: GoogleFonts.roboto(
                           color: Colors.white,
                         ),
@@ -330,7 +424,7 @@ Widget buildEnableDrivers(context, {required MenuBloc menuBloc}) {
               Align(
                 alignment: const Alignment(-0.2, 0.0),
                 child: Text(
-                  "H A B I L I T A R",
+                  AppLocalizations.of(context)?.enableDrivers ?? "H A B I L I T A R",
                   style: GoogleFonts.roboto(
                     color: Colors.white,
                   ),

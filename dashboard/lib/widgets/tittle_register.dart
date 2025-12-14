@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:transport_dashboard/l10n/app_localizations.dart';
 
 class TittleRegister extends StatelessWidget {
   
@@ -19,7 +20,7 @@ class TittleRegister extends StatelessWidget {
           FittedBox(
             fit: BoxFit.contain,
             child: Text(
-              'REGISTRARME',
+              AppLocalizations.of(context)?.registerTitle ?? 'REGISTRARME',
               style: GoogleFonts.montserratAlternates(
                 fontSize: 60,
                 color: Colors.white,
@@ -27,12 +28,13 @@ class TittleRegister extends StatelessWidget {
               ),
             ),
           ),
-           Center(
-             child: Image(
-                    image: const AssetImage('assets/remis.png'),
-                    width: size.width < 1100 ? 200 : 300,
-             ),
-           ),
+         
+           // Center(
+           //   child: Image(
+           //     image: const AssetImage('assets/logo.png'),
+           //     width: size.width < 1100 ? 200 : 300,
+           //   ),
+           // ),
         ],
       ),
     );

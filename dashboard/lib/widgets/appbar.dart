@@ -1,4 +1,4 @@
-import 'package:dashborad/buttons/link_text.dart';
+import 'package:transport_dashboard/buttons/link_text.dart';
 import 'package:flutter/material.dart';
 
 

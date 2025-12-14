@@ -4,7 +4,7 @@
 
 import 'dart:convert';
 
-import 'package:dashborad/models/admin.dart';
+import 'package:transport_dashboard/models/admin.dart';
 
 
 LoginResponse loginResponseFromJson(String str) => LoginResponse.fromMap(json.decode(str));

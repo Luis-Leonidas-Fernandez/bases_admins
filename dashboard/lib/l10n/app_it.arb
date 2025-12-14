@@ -1,0 +1,188 @@
+{
+  "@@locale": "it",
+  "appTitle": "Dashboard Trasporti",
+  "@appTitle": {
+    "description": "Titolo dell'applicazione"
+  },
+  "welcome": "BENVENUTO NELLA DASHBOARD",
+  "@welcome": {
+    "description": "Messaggio di benvenuto"
+  },
+  "serviceTitle": "SERVIZIO DI TRASPORTO ONLINE",
+  "@serviceTitle": {
+    "description": "Sottotitolo del servizio"
+  },
+  "loginTitle": "ACCEDI",
+  "@loginTitle": {
+    "description": "Titolo di login"
+  },
+  "registerTitle": "REGISTRATI",
+  "@registerTitle": {
+    "description": "Titolo di registrazione"
+  },
+  "login": "ENTRA",
+  "@login": {
+    "description": "Testo del pulsante di accesso"
+  },
+  "register": "NUOVO ACCOUNT",
+  "@register": {
+    "description": "Testo del pulsante di registrazione"
+  },
+  "email": "La Tua Email",
+  "@email": {
+    "description": "Placeholder del campo email"
+  },
+  "password": "La Tua Password",
+  "@password": {
+    "description": "Placeholder del campo password"
+  },
+  "name": "Il Tuo Nome",
+  "@name": {
+    "description": "Placeholder del campo nome"
+  },
+  "forgotPassword": "Hai dimenticato la password?",
+  "@forgotPassword": {
+    "description": "Link per recuperare la password"
+  },
+  "selectLanguage": "Seleziona Lingua",
+  "@selectLanguage": {
+    "description": "Titolo del selettore di lingua"
+  },
+  "language": "Lingua",
+  "@language": {
+    "description": "Etichetta della lingua"
+  },
+  "home": "H O M E",
+  "@home": {
+    "description": "Testo del menu Home"
+  },
+  "invoice": "FATTURA",
+  "@invoice": {
+    "description": "Testo del menu Fattura"
+  },
+  "bases": "BASI",
+  "@bases": {
+    "description": "Testo del menu Basi"
+  },
+  "enableDrivers": "ABILITA",
+  "@enableDrivers": {
+    "description": "Testo del menu Abilita"
+  },
+  "logout": "E S C I",
+  "@logout": {
+    "description": "Testo del pulsante Esci"
+  },
+  "trips": "VIAGGI",
+  "@trips": {
+    "description": "Testo breve per viaggi (mobile)"
+  },
+  "completedTrips": "VIAGGI COMPLETATI",
+  "@completedTrips": {
+    "description": "Testo lungo per viaggi completati (desktop)"
+  },
+  "driver": "CONDUTTORE",
+  "@driver": {
+    "description": "Testo breve per conduttore (mobile)"
+  },
+  "activeDrivers": "CONDUTTORI ATTIVI",
+  "@activeDrivers": {
+    "description": "Testo lungo per conduttori attivi (desktop)"
+  },
+  "vehicles": "VEICOLI",
+  "@vehicles": {
+    "description": "Testo breve per veicoli (mobile)"
+  },
+  "activeVehicles": "VEICOLI ATTIVI",
+  "@activeVehicles": {
+    "description": "Testo lungo per veicoli attivi (desktop)"
+  },
+  "lastName": "COGNOME",
+  "@lastName": {
+    "description": "Testo per cognome"
+  },
+  "firstName": "NOME",
+  "@firstName": {
+    "description": "Testo per nome"
+  },
+  "vehicle": "VEICOLO",
+  "@vehicle": {
+    "description": "Testo per veicolo"
+  },
+  "tripsColumn": "VIAGGI",
+  "@tripsColumn": {
+    "description": "Testo per colonna viaggi"
+  },
+  "actions": "AZIONI",
+  "@actions": {
+    "description": "Testo per azioni"
+  },
+  "license": "LICENZA",
+  "@license": {
+    "description": "Testo per licenza"
+  },
+  "plate": "TARGA",
+  "@plate": {
+    "description": "Testo per targa"
+  },
+  "model": "MODELLO",
+  "@model": {
+    "description": "Testo per modello"
+  },
+  "status": "STATO",
+  "@status": {
+    "description": "Testo per stato"
+  },
+  "topMonthlyDrivers": "Top Mensile Conduttori",
+  "@topMonthlyDrivers": {
+    "description": "Titolo per top mensile conduttori"
+  },
+  "connectedDrivers": "Conduttori Connessi",
+  "@connectedDrivers": {
+    "description": "Titolo per conduttori connessi"
+  },
+  "createBaseInZone": "Crea la tua Base nella Zona che desideri",
+  "@createBaseInZone": {
+    "description": "Titolo per creare base nella zona"
+  },
+  "next": "AVANTI",
+  "@next": {
+    "description": "Testo del pulsante avanti"
+  },
+  "pressNext": "Premi AVANTI",
+  "@pressNext": {
+    "description": "Messaggio per premere avanti"
+  },
+  "selectZone": "Seleziona zona",
+  "@selectZone": {
+    "description": "Messaggio per selezionare zona"
+  },
+  "enableDriversTitle": "Abilita Conduttori",
+  "@enableDriversTitle": {
+    "description": "Titolo per abilitare conduttori"
+  },
+  "noDriversToShow": "Nessun conduttore da mostrare.",
+  "@noDriversToShow": {
+    "description": "Messaggio quando non ci sono conduttori"
+  },
+  "noVehicle": "Nessun veicolo",
+  "@noVehicle": {
+    "description": "Testo quando non c'è veicolo"
+  },
+  "processingEnable": "Elaborazione abilitazione...",
+  "@processingEnable": {
+    "description": "Messaggio durante l'elaborazione dell'abilitazione"
+  },
+  "enable": "Abilita",
+  "@enable": {
+    "description": "Testo del pulsante abilita"
+  },
+  "zoneLabel": "Zona:",
+  "@zoneLabel": {
+    "description": "Etichetta per zona"
+  },
+  "baseLabel": "Base:",
+  "@baseLabel": {
+    "description": "Etichetta per base"
+  }
+}
+

@@ -1,6 +1,6 @@
-import 'package:dashborad/api/config.dart';
-import 'package:dashborad/models/drivers.dart';
-import 'package:dashborad/service/storage_service.dart';
+import 'package:transport_dashboard/api/config.dart';
+import 'package:transport_dashboard/models/drivers.dart';
+import 'package:transport_dashboard/service/storage_service.dart';
 import 'package:flutter/foundation.dart';
 
 class DriversAndBaseService {

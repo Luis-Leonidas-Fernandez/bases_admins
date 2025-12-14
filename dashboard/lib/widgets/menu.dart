@@ -1,6 +1,6 @@
-import 'package:dashborad/widgets/text_separator.dart';
+import 'package:transport_dashboard/widgets/text_separator.dart';
 import 'package:flutter/material.dart';
-import 'package:dashborad/service/navigation_service.dart';
+import 'package:transport_dashboard/service/navigation_service.dart';
 
 class Menu extends StatelessWidget {
 

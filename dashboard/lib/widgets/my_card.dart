@@ -1,6 +1,7 @@
 
-import 'package:dashborad/constants/constants.dart';
-import 'package:dashborad/models/drivers.dart';
+import 'package:transport_dashboard/constants/constants.dart';
+import 'package:transport_dashboard/models/drivers.dart';
+import 'package:transport_dashboard/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -29,7 +30,7 @@ class MyCard extends StatelessWidget {
                 child: Stack(
                   children: [
                    
-                     contentContainerBlue(size, data)               
+                     contentContainerBlue(context, size, data)               
                   
                   ],) ),
             ),
@@ -54,7 +55,7 @@ class MyCard extends StatelessWidget {
                 child:  Stack(
                   children: [
                          
-                         contentContainerOrange(size, data)
+                         contentContainerOrange(context, size, data)
                     
                   ],
                 )
@@ -78,7 +79,7 @@ class MyCard extends StatelessWidget {
                 child: Stack(
                   children: [
                       
-                      contentContainerPink(size, data)
+                      contentContainerPink(context, size, data)
                     
                   ],
                 )
@@ -148,7 +149,7 @@ class MyCard extends StatelessWidget {
   );
 }
 
-Widget contentContainerPink(Size size, Data? data){
+Widget contentContainerPink(BuildContext context, Size size, Data? data){
 
   final vehiculos =  data?.drivers?.length.toString() ?? "0";
 
@@ -163,7 +164,10 @@ Widget contentContainerPink(Size size, Data? data){
               fit: BoxFit.contain,
               child: Align(
                        alignment: const Alignment(-0.4, 0.7),
-                       child: Text( size.width < 856 ? "VEHICULOS" : "VEHICULOS ACTIVOS",
+                       child: Text(
+                        size.width < 856 
+                          ? (AppLocalizations.of(context)?.vehicles ?? "VEHICULOS")
+                          : (AppLocalizations.of(context)?.activeVehicles ?? "VEHICULOS ACTIVOS"),
                        style: GoogleFonts.roboto(
                    color:Colors.white,
                    fontSize: size.width < 856 ? 18 : 24,
@@ -199,7 +203,7 @@ Widget contentContainerPink(Size size, Data? data){
   );
 }
 
-Widget contentContainerOrange(Size size, Data? data){
+Widget contentContainerOrange(BuildContext context, Size size, Data? data){
 
   final drivers = data?.drivers?.length.toString() ?? "0";
 
@@ -214,7 +218,10 @@ Widget contentContainerOrange(Size size, Data? data){
                 fit: BoxFit.contain,
                 child: Align(
                  alignment: const Alignment(-0.4, -0.7),
-                   child: Text( size.width < 856 ? "CONDUCTOR" : "CONDUCTORES ACTIVOS",
+                   child: Text(
+                     size.width < 856 
+                       ? (AppLocalizations.of(context)?.driver ?? "CONDUCTOR")
+                       : (AppLocalizations.of(context)?.activeDrivers ?? "CONDUCTORES ACTIVOS"),
                    style: GoogleFonts.roboto(
                    color:Colors.white,
                    fontSize: size.width < 856 ? 18 : 24,
@@ -254,7 +261,7 @@ Widget contentContainerOrange(Size size, Data? data){
 }
 
 
-Widget contentContainerBlue(Size size, Data? data){
+Widget contentContainerBlue(BuildContext context, Size size, Data? data){
   
   final viajes = data?.viajes.toString() ?? "210";
 
@@ -269,7 +276,10 @@ Widget contentContainerBlue(Size size, Data? data){
                   fit: BoxFit.contain,
                   child: Align(
                     alignment: const Alignment(-0.7,  -0.7  ),
-                      child: Text(size.width < 856 ? "VIAJES" : "VIAJES REALIZADOS",
+                      child: Text(
+                        size.width < 856 
+                          ? (AppLocalizations.of(context)?.trips ?? "VIAJES")
+                          : (AppLocalizations.of(context)?.completedTrips ?? "VIAJES REALIZADOS"),
                        style: GoogleFonts.roboto(
                        color:Colors.white,
                        fontSize: size.width < 856? 18 : 24,

@@ -1,4 +1,4 @@
-import 'package:dashborad/models/drivers.dart';
+import 'package:transport_dashboard/models/drivers.dart';
 
 class CheckList {    
 

@@ -1,7 +1,6 @@
-import 'package:dashborad/blocs/blocs.dart';
-import 'package:dashborad/blocs/menu/menu_bloc.dart';
-import 'package:dashborad/widgets/navbar.dart';
-import 'package:dashborad/widgets/sidebar.dart';
+import 'package:transport_dashboard/blocs/blocs.dart';
+import 'package:transport_dashboard/widgets/navbar.dart';
+import 'package:transport_dashboard/widgets/sidebar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

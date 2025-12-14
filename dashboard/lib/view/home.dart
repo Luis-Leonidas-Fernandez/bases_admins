@@ -1,8 +1,9 @@
-import 'package:dashborad/blocs/blocs.dart';
-import 'package:dashborad/models/drivers.dart' hide DriversState;
-import 'package:dashborad/widgets/data_container.dart';
-import 'package:dashborad/widgets/my_card.dart';
-import 'package:dashborad/widgets/top_drivers.dart';
+import 'package:transport_dashboard/blocs/blocs.dart';
+import 'package:transport_dashboard/models/drivers.dart' hide DriversState;
+import 'package:transport_dashboard/widgets/data_container.dart';
+import 'package:transport_dashboard/widgets/my_card.dart';
+import 'package:transport_dashboard/widgets/top_drivers.dart';
+import 'package:transport_dashboard/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -40,14 +41,18 @@ class _HomeState extends State<Home> {
 
     return BlocBuilder<DriversBloc, DriversState>(
            builder: (context, state) {
-           final data = state.driversModelOnline?.data;
+           final model = state.driversModelOnline;
+           final data = model?.data;
 
-          if (state.driversModelOnline == null || data == null) {
+          // Si no hay modelo cargado, mostrar loading
+          if (model == null) {
            return const Center(
             child: CircularProgressIndicator(),
            );
          }
 
+         // Siempre mostrar el home page, incluso si no hay datos
+         // Los widgets manejarán mostrar datos vacíos o null
          if (size.width < 856) {
           return mobileBody(size, data);
         } else {
@@ -80,7 +85,7 @@ class _HomeState extends State<Home> {
                           0.0,
                         ),
                         child: Text(
-                          "Bienvenido Inri Remises",
+                          AppLocalizations.of(context)?.welcome ?? "Bienvenido al Dashboard",
                           style: GoogleFonts.merienda(
                               color: Colors.black,
                               fontSize: 35,
@@ -124,7 +129,7 @@ class _HomeState extends State<Home> {
               color: Colors.transparent,
               width: size.width,
               height: 100,
-              child: tittle(size)),
+              child: tittle(size, context)),
           Container(
               color: Colors.transparent,
               width: size.width,
@@ -146,13 +151,13 @@ class _HomeState extends State<Home> {
   }
 }
 
-Widget tittle(Size size) {
+Widget tittle(Size size, BuildContext context) {
   return Row(
     children: [
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 5.0),
         child: Text(
-          "Bienvenido Inri Remises",
+          AppLocalizations.of(context)?.welcome ?? "Bienvenido al Dashboard",
           style: GoogleFonts.merienda(
               color: Colors.black,
               fontSize: size.width < 400 ? 20 : 23,

@@ -1,7 +1,7 @@
-import 'package:dashborad/blocs/user/auth_bloc.dart';
-import 'package:dashborad/buttons/nueva_cuenta.dart';
-import 'package:dashborad/widgets/alert_screen.dart';
-import 'package:dashborad/widgets/tittle.dart';
+import 'package:transport_dashboard/blocs/user/auth_bloc.dart';
+import 'package:transport_dashboard/buttons/nueva_cuenta.dart';
+import 'package:transport_dashboard/widgets/tittle.dart';
+import 'package:transport_dashboard/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -45,113 +45,134 @@ class _ColumnTextFieldState extends State<ColumnTextField> {
 
   @override
   Widget build(BuildContext context) { 
+    final authBloc = BlocProvider.of<AuthBloc>(context);
+    final size = MediaQuery.of(context).size; 
 
-
-     final authBloc = BlocProvider.of<AuthBloc>(context);
-     final size = MediaQuery.of(context).size; 
-
-    return  Container(
-
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state.errorMessage != null && state.errorMessage!.isNotEmpty) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.errorMessage!),
+              backgroundColor: Colors.red,
+              behavior: SnackBarBehavior.floating,
+              duration: const Duration(seconds: 4),
+              action: SnackBarAction(
+                label: 'Cerrar',
+                textColor: Colors.white,
+                onPressed: () {
+                  ScaffoldMessenger.of(context).hideCurrentSnackBar();
+                },
+              ),
+            ),
+          );
+          // Limpiar el error después de mostrarlo
+          authBloc.add(const OnClearAuthErrorEvent());
+        }
+      },
+      child: Container(
         color: Colors.transparent,
         constraints: const BoxConstraints(maxHeight: 480),                  
-      
         child: Column(       
-         
           children: [
-
             Tittle(size: size),
-            
             const SizedBox(height: 48),
-
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: TextContainer(
-                  child: TextField(
-                   decoration: const InputDecoration(
-                    icon: Icon(Icons.person),
-                    hintText: "Tu Correo",
-                    
+                child: TextField(
+                  decoration: InputDecoration(
+                    icon: const Icon(Icons.person),
+                    hintText: AppLocalizations.of(context)?.email ?? "Tu Correo",
                   ),
                   controller: emailCtrl,
-                  )
-                  
-                 ),
+                  keyboardType: TextInputType.emailAddress,
+                ),
+              ),
             ),
-               const SizedBox(height: 5),
+            const SizedBox(height: 5),
         
-               Padding(
-                padding:const EdgeInsets.symmetric(horizontal: 10.0),
-                 child: TextContainer(
-                  child: TextField(
-                   decoration: const InputDecoration(
-                    icon: Icon(Icons.key),
-                    hintText: "Tu Contraseña",
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: TextContainer(
+                child: TextField(
+                  decoration: InputDecoration(
+                    icon: const Icon(Icons.key),
+                    hintText: AppLocalizations.of(context)?.password ?? "Tu Contraseña",
                   ),
                   controller: passCtrl,
-                  ),
-                  
-                 ),
-               ),
+                  obscureText: true,
+                ),
+              ),
+            ),
 
-               const SizedBox(height: 15),
+            const SizedBox(height: 15),
 
-               MaterialButton(
-                minWidth: 125,
-                height: 45,
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-                disabledColor: Colors.grey,
-                elevation: 0,
-                color: Colors.deepPurple,
-                onPressed: authBloc.state.authenticando == true ? (){}
-                : () async {
-
-
-                  final registerOk = await authBloc.initLogin(emailCtrl.text.toString(), passCtrl.text.toString());
-                  
-                  
-                  // ignore: use_build_context_synchronously
-                  if(registerOk == true && context.mounted == true){
-                      return context.goNamed('dashboard');
-                  }else{
-                    if(!context.mounted) return;
-                    mostrarAlerta(
-                        context,
-                        'Login incorrecto',
-                        'Revise sus credenciales nuevamente',
+            BlocBuilder<AuthBloc, AuthState>(
+              builder: (context, state) {
+                return MaterialButton(
+                  minWidth: 125,
+                  height: 45,
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+                  disabledColor: Colors.grey,
+                  elevation: 0,
+                  color: Colors.deepPurple,
+                  onPressed: (state.isLoading || state.authenticando == true) 
+                    ? (){}
+                    : () async {
+                      final registerOk = await authBloc.initLogin(
+                        emailCtrl.text.toString(), 
+                        passCtrl.text.toString()
                       );
-                  }   
-                     
-                
+                      
+                      if (registerOk == true && context.mounted == true) {
+                        return context.goNamed('dashboard');
+                      }
+                    },
+                  child: state.isLoading 
+                    ? const SizedBox(
+                        width: 20,
+                        height: 20,
+                        child: CircularProgressIndicator(
+                          strokeWidth: 2,
+                          valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                        ),
+                      )
+                    : Text(
+                        AppLocalizations.of(context)?.login ?? "INGRESAR",
+                        style: GoogleFonts.montserratAlternates(
+                          color: Colors.white,
+                          fontSize: 18
+                        ),
+                      ),
+                );
+              },
+            ),
 
-                },
-                child: Text("INGRESAR",
-                 style: GoogleFonts.montserratAlternates(
-                 color: Colors.white,
-                 fontSize: 18)
-                ) 
+            const SizedBox(height: 8),
+
+            TextButton(
+              onPressed: () => context.push('/forgot-password'),
+              child: Text(
+                AppLocalizations.of(context)?.forgotPassword ?? '¿Olvidaste tu contraseña?',
+                style: GoogleFonts.montserratAlternates(
+                  fontSize: 14,
+                  color: Colors.lightBlue[400] ?? Colors.lightBlue,
                 ),
-
-               const SizedBox(height: 8),               
-               
-               ButtonNuevaCuenta(
-                text: "NUEVA CUENTA",
-                onPressed: (){
-
-                  GoRouter.of(context).push('/register');
-                  
-                },
-                ),
-        
-             
-    
-              
-              
-               
+              ),
+            ),
+            
+            ButtonNuevaCuenta(
+              text: AppLocalizations.of(context)?.register ?? "NUEVA CUENTA",
+              onPressed: () {
+                GoRouter.of(context).push('/register');
+              },
+            ),
           ],
         ),
-      );
-    
+      ),
+    );
   }
 }
 

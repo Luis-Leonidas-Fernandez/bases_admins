@@ -1,5 +1,5 @@
-import 'package:dashborad/constants/constants.dart';
-import 'package:dashborad/widgets/content_all_invoice.dart';
+import 'package:transport_dashboard/constants/constants.dart';
+import 'package:transport_dashboard/widgets/content_all_invoice.dart';
 import 'package:flutter/material.dart';
 
 class AllInvoices extends StatelessWidget {

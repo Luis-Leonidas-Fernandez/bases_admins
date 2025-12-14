@@ -1,7 +1,7 @@
-import 'package:dashborad/constants/constants.dart';
-import 'package:dashborad/service/history.dart';
+import 'package:transport_dashboard/constants/constants.dart';
+import 'package:transport_dashboard/service/history.dart';
 import 'package:flutter/material.dart';
-import 'package:dashborad/models/travels.dart';
+import 'package:transport_dashboard/models/travels.dart';
 import 'package:intl/intl.dart';
 
 class TravelHistoryPage extends StatefulWidget {

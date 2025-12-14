@@ -1,0 +1,188 @@
+{
+  "@@locale": "en",
+  "appTitle": "Transport Dashboard",
+  "@appTitle": {
+    "description": "Application title"
+  },
+  "welcome": "WELCOME TO DASHBOARD",
+  "@welcome": {
+    "description": "Welcome message"
+  },
+  "serviceTitle": "ONLINE TRANSPORT SERVICE",
+  "@serviceTitle": {
+    "description": "Service subtitle"
+  },
+  "loginTitle": "LOGIN",
+  "@loginTitle": {
+    "description": "Login title"
+  },
+  "registerTitle": "REGISTER",
+  "@registerTitle": {
+    "description": "Register title"
+  },
+  "login": "ENTER",
+  "@login": {
+    "description": "Login button text"
+  },
+  "register": "NEW ACCOUNT",
+  "@register": {
+    "description": "Register button text"
+  },
+  "email": "Your Email",
+  "@email": {
+    "description": "Email field placeholder"
+  },
+  "password": "Your Password",
+  "@password": {
+    "description": "Password field placeholder"
+  },
+  "name": "Your Name",
+  "@name": {
+    "description": "Name field placeholder"
+  },
+  "forgotPassword": "Forgot your password?",
+  "@forgotPassword": {
+    "description": "Forgot password link"
+  },
+  "selectLanguage": "Select Language",
+  "@selectLanguage": {
+    "description": "Language selector title"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language label"
+  },
+  "home": "H O M E",
+  "@home": {
+    "description": "Home menu text"
+  },
+  "invoice": "I N V O I C E",
+  "@invoice": {
+    "description": "Invoice menu text"
+  },
+  "bases": "B A S E S",
+  "@bases": {
+    "description": "Bases menu text"
+  },
+  "enableDrivers": "E N A B L E",
+  "@enableDrivers": {
+    "description": "Enable menu text"
+  },
+  "logout": "L O G O U T",
+  "@logout": {
+    "description": "Logout button text"
+  },
+  "trips": "TRIPS",
+  "@trips": {
+    "description": "Short text for trips (mobile)"
+  },
+  "completedTrips": "COMPLETED TRIPS",
+  "@completedTrips": {
+    "description": "Long text for completed trips (desktop)"
+  },
+  "driver": "DRIVER",
+  "@driver": {
+    "description": "Short text for driver (mobile)"
+  },
+  "activeDrivers": "ACTIVE DRIVERS",
+  "@activeDrivers": {
+    "description": "Long text for active drivers (desktop)"
+  },
+  "vehicles": "VEHICLES",
+  "@vehicles": {
+    "description": "Short text for vehicles (mobile)"
+  },
+  "activeVehicles": "ACTIVE VEHICLES",
+  "@activeVehicles": {
+    "description": "Long text for active vehicles (desktop)"
+  },
+  "lastName": "LAST NAME",
+  "@lastName": {
+    "description": "Text for last name"
+  },
+  "firstName": "FIRST NAME",
+  "@firstName": {
+    "description": "Text for first name"
+  },
+  "vehicle": "VEHICLE",
+  "@vehicle": {
+    "description": "Text for vehicle"
+  },
+  "tripsColumn": "TRIPS",
+  "@tripsColumn": {
+    "description": "Text for trips column"
+  },
+  "actions": "ACTIONS",
+  "@actions": {
+    "description": "Text for actions"
+  },
+  "license": "LICENSE",
+  "@license": {
+    "description": "Text for license"
+  },
+  "plate": "PLATE",
+  "@plate": {
+    "description": "Text for plate"
+  },
+  "model": "MODEL",
+  "@model": {
+    "description": "Text for model"
+  },
+  "status": "STATUS",
+  "@status": {
+    "description": "Text for status"
+  },
+  "topMonthlyDrivers": "Top Monthly Drivers",
+  "@topMonthlyDrivers": {
+    "description": "Title for top monthly drivers"
+  },
+  "connectedDrivers": "Connected Drivers",
+  "@connectedDrivers": {
+    "description": "Title for connected drivers"
+  },
+  "createBaseInZone": "Create your Base in the Zone you want",
+  "@createBaseInZone": {
+    "description": "Title for creating base in zone"
+  },
+  "next": "NEXT",
+  "@next": {
+    "description": "Next button text"
+  },
+  "pressNext": "Press NEXT",
+  "@pressNext": {
+    "description": "Message to press next"
+  },
+  "selectZone": "Select zone",
+  "@selectZone": {
+    "description": "Message to select zone"
+  },
+  "enableDriversTitle": "Enable Drivers",
+  "@enableDriversTitle": {
+    "description": "Title for enabling drivers"
+  },
+  "noDriversToShow": "No drivers to show.",
+  "@noDriversToShow": {
+    "description": "Message when there are no drivers"
+  },
+  "noVehicle": "No vehicle",
+  "@noVehicle": {
+    "description": "Text when there is no vehicle"
+  },
+  "processingEnable": "Processing enablement...",
+  "@processingEnable": {
+    "description": "Message while processing enablement"
+  },
+  "enable": "Enable",
+  "@enable": {
+    "description": "Enable button text"
+  },
+  "zoneLabel": "Zone:",
+  "@zoneLabel": {
+    "description": "Label for zone"
+  },
+  "baseLabel": "Base:",
+  "@baseLabel": {
+    "description": "Label for base"
+  }
+}
+

@@ -1,5 +1,5 @@
 
-import 'package:dashborad/service/storage_service.dart';
+import 'package:transport_dashboard/service/storage_service.dart';
 
 class LogOutApp {
 

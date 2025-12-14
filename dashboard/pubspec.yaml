@@ -1,4 +1,4 @@
-name: dashborad
+name: transport_dashboard
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
@@ -53,7 +53,12 @@ dependencies:
   hydrated_bloc: ^9.1.5
   path_provider: ^2.1.3
   flutter_dotenv: ^5.0.2
-  intl: ^0.18.1 # o la última versión disponible
+  intl: ^0.20.2 # o la última versión disponible
+  flutter_localizations:
+    sdk: flutter
+  flutter_map: ^8.2.2
+  latlong2: ^0.9.1
+  geolocator: ^12.0.0
   
 
 
@@ -80,14 +85,24 @@ flutter:
   # the material Icons class.
   uses-material-design: true
 
+  # Generate localization files
+  generate: true
+
+  # Localization configuration
+  # l10n.yaml is auto-generated, or you can specify:
+  # arb-dir: lib/l10n
+  # template-arb-file: app_es.arb
+  # output-localization-file: app_localizations.dart
+
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/photo.png
-    - assets/remis.png
-    - assets/inri.png
-    - assets/map.webp
-    - assets/fontana.webp
-    - assets/barranqueras.webp
+    - assets/company_logo.png
+    - assets/remis.webp
+    - assets/icon.png
+    # TODO: Add your custom assets (logo, location images, etc.)
+    
+    # - assets/location1.webp
+    # - assets/location2.webp
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

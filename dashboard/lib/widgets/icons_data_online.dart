@@ -1,5 +1,5 @@
-import 'package:dashborad/constants/constants.dart';
-import 'package:dashborad/models/drivers.dart';
+import 'package:transport_dashboard/constants/constants.dart';
+import 'package:transport_dashboard/models/drivers.dart';
 import 'package:flutter/material.dart';
 
 class IconsDriversOnline extends StatelessWidget {

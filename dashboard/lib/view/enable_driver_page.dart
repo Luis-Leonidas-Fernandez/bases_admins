@@ -1,6 +1,7 @@
-import 'package:dashborad/blocs/blocs.dart';
-import 'package:dashborad/constants/constants.dart';
-import 'package:dashborad/models/drivers.dart' hide DriversState;
+import 'package:transport_dashboard/blocs/blocs.dart';
+import 'package:transport_dashboard/constants/constants.dart';
+import 'package:transport_dashboard/models/drivers.dart' hide DriversState;
+import 'package:transport_dashboard/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,17 +11,23 @@ class EnableDriverPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    final isMobile = size.width < 856;
+    
     return Scaffold(
       backgroundColor: const Color(0xFFF8F5FB),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text(
-          'Habilitar conductores',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-            color: Color(0xFF4B0082),
+        title: Padding(
+          padding: EdgeInsets.only(top: isMobile ? 40.0 : 0.0),
+          child: Text(
+            AppLocalizations.of(context)?.enableDriversTitle ?? 'Habilitar conductores',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              color: Color(0xFF4B0082),
+            ),
           ),
         ),
         centerTitle: true,
@@ -43,9 +50,11 @@ class EnableDriverPage extends StatelessWidget {
           final drivers = allDrivers.where((d) => d.online == null).toList();
 
           if (drivers.isEmpty) {
-            return const Center(
-              child: Text('No hay conductores para mostrar.',
-                  style: TextStyle(fontSize: 18, color: Colors.grey)),
+            return Center(
+              child: Text(
+                AppLocalizations.of(context)?.noDriversToShow ?? 'No hay conductores para mostrar.',
+                style: const TextStyle(fontSize: 18, color: Colors.grey),
+              ),
             );
           }
 
@@ -55,14 +64,22 @@ class EnableDriverPage extends StatelessWidget {
               children: [
 
                 if ((data?.zonaName ?? '').isNotEmpty)
-
-                  Text(
-                    'Zona: ${data?.zonaName} Base: ${data?.base}',
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Color(0xFF4B0082),
-                    ),
+                  Builder(
+                    builder: (context) {
+                      final localizations = AppLocalizations.of(context);
+                      final zonaName = data?.zonaName ?? '';
+                      final base = data?.base?.toString() ?? '';
+                      final zoneLabel = localizations?.zoneLabel ?? 'Zona:';
+                      final baseLabel = localizations?.baseLabel ?? 'Base:';
+                      return Text(
+                        '$zoneLabel $zonaName $baseLabel $base',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xFF4B0082),
+                        ),
+                      );
+                    },
                   ),
 
                 const SizedBox(height: 4),
@@ -126,7 +143,7 @@ class EnableDriverPage extends StatelessWidget {
                                         const SizedBox(width: 6),
                                         Flexible(
                                           child: Text(
-                                            vehiculo ?? 'Sin vehículo',
+                                            vehiculo ?? (AppLocalizations.of(context)?.noVehicle ?? 'Sin vehículo'),
                                             overflow: TextOverflow.ellipsis,
                                             style: TextStyle(color: containerColor),
                                           ),
@@ -149,11 +166,11 @@ class EnableDriverPage extends StatelessWidget {
                                         WidgetsBinding.instance.addPostFrameCallback((_) {
                                         if (!context.mounted) return;
                                         ScaffoldMessenger.of(context).showSnackBar(
-                                        const SnackBar(content: Text('Procesando habilitación...')),
+                                        SnackBar(content: Text(AppLocalizations.of(context)?.processingEnable ?? 'Procesando habilitación...')),
                                          );
                                        });
                                       },
-                                child: const Text('Habilitar'),
+                                child: Text(AppLocalizations.of(context)?.enable ?? 'Habilitar'),
                               ),
                             ],
                           ),

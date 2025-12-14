@@ -1,7 +1,11 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:dashborad/constants/constants.dart';
-import 'package:dashborad/view/register.dart';
+import 'package:transport_dashboard/constants/constants.dart';
+import 'package:transport_dashboard/view/register.dart';
+import 'package:transport_dashboard/widgets/language_selector.dart';
+import 'package:transport_dashboard/l10n/app_localizations.dart';
+import 'package:transport_dashboard/blocs/language/language_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class RegisterView extends StatelessWidget {
@@ -14,13 +18,15 @@ class RegisterView extends StatelessWidget {
     
     final size = MediaQuery.of(context).size;
       
-    return Container(
-      color: Colors.transparent,
-      height: size.height,
-      width: size.width,
-      child: Row( 
+    return Stack(
+      children: [
+        Container(
+          color: Colors.transparent,
+          height: size.height,
+          width: size.width,
+          child: Row( 
 
-        children: [
+            children: [
 
            _Welcome(),
            //
@@ -50,7 +56,17 @@ class RegisterView extends StatelessWidget {
          
         ],
       )
-
+        ),
+        // Selector de idioma en la esquina superior derecha
+        const Positioned(
+          top: 20,
+          right: 20,
+          child: LanguageSelector(
+            showLabel: false,
+            padding: EdgeInsets.zero,
+          ),
+        ),
+      ],
     );
   }
 }
@@ -77,19 +93,27 @@ class _Welcome extends StatelessWidget {
 
             FittedBox(
               fit: BoxFit.contain,
-              child: Text('BIENVENIDO A INRI REMISES', style: h4)
+              child: Text(AppLocalizations.of(context)?.welcome ?? 'BIENVENIDO AL DASHBOARD', style: h4)
               ),
 
             const SizedBox(height: 5), 
             
-            AnimatedTextKit(            
-              animatedTexts: [       
-                           
-                TypewriterAnimatedText('SERVICIO DE TRANSPORTE ONLINE', textStyle: h3, cursor: '_',
-                 speed: const Duration(milliseconds: 55)
-               ),
-              ],
-              ),
+            BlocBuilder<LanguageBloc, LanguageState>(
+              builder: (context, languageState) {
+                return AnimatedTextKit(
+                  key: ValueKey(languageState.locale), // Clave única para forzar reconstrucción
+                  animatedTexts: [       
+                              
+                    TypewriterAnimatedText(
+                      AppLocalizations.of(context)?.serviceTitle ?? 'SERVICIO DE TRANSPORTE ONLINE', 
+                      textStyle: h3, 
+                      cursor: '_',
+                      speed: const Duration(milliseconds: 55)
+                    ),
+                  ],
+                );
+              },
+            ),
         
         const SizedBox(height: 150),
 
@@ -121,11 +145,8 @@ class _ImageProfile extends StatelessWidget {
                width: 500,
                color: Colors.transparent,  
                   child: const Center(          
-                    child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 2),
                     child: Image(
-                    image: AssetImage('assets/inri.png'),
-                    ),
+                      image: AssetImage('assets/company_logo.png'),
                     ),
                   ),
             ),

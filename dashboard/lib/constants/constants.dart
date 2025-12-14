@@ -4,7 +4,7 @@ import 'package:hexcolor/hexcolor.dart';
 
 
 var myDefaultBackground =  HexColor("#1A0E2D") ;
-var myDashboradColor    =  HexColor("#EDF1F2");
+var myDashboardColor    =  HexColor("#EDF1F2");
 var navBarColor = HexColor("#703dc3");
 var firstColor = HexColor("#6528F7");
 var secondColor = HexColor("#5A24DE");

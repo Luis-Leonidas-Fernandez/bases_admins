@@ -1,4 +1,4 @@
-import 'package:dashborad/constants/constants.dart';
+import 'package:transport_dashboard/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -13,7 +13,7 @@ class _CustomDialogState extends State<CustomDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-                backgroundColor: myDashboradColor,
+                backgroundColor: myDashboardColor,
                 title: const Text('Registro Exitoso ir a Home'),
                 
                 actions: [

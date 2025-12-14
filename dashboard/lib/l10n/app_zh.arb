@@ -1,0 +1,188 @@
+{
+  "@@locale": "zh",
+  "appTitle": "交通仪表板",
+  "@appTitle": {
+    "description": "应用程序标题"
+  },
+  "welcome": "欢迎使用仪表板",
+  "@welcome": {
+    "description": "欢迎消息"
+  },
+  "serviceTitle": "在线交通服务",
+  "@serviceTitle": {
+    "description": "服务副标题"
+  },
+  "loginTitle": "登录",
+  "@loginTitle": {
+    "description": "登录标题"
+  },
+  "registerTitle": "注册",
+  "@registerTitle": {
+    "description": "注册标题"
+  },
+  "login": "进入",
+  "@login": {
+    "description": "登录按钮文本"
+  },
+  "register": "新账户",
+  "@register": {
+    "description": "注册按钮文本"
+  },
+  "email": "您的邮箱",
+  "@email": {
+    "description": "邮箱字段占位符"
+  },
+  "password": "您的密码",
+  "@password": {
+    "description": "密码字段占位符"
+  },
+  "name": "您的姓名",
+  "@name": {
+    "description": "姓名字段占位符"
+  },
+  "forgotPassword": "忘记密码？",
+  "@forgotPassword": {
+    "description": "忘记密码链接"
+  },
+  "selectLanguage": "选择语言",
+  "@selectLanguage": {
+    "description": "语言选择器标题"
+  },
+  "language": "语言",
+  "@language": {
+    "description": "语言标签"
+  },
+  "home": "首 页",
+  "@home": {
+    "description": "首页菜单文本"
+  },
+  "invoice": "发 票",
+  "@invoice": {
+    "description": "发票菜单文本"
+  },
+  "bases": "基 地",
+  "@bases": {
+    "description": "基地菜单文本"
+  },
+  "enableDrivers": "启 用",
+  "@enableDrivers": {
+    "description": "启用菜单文本"
+  },
+  "logout": "退 出",
+  "@logout": {
+    "description": "退出按钮文本"
+  },
+  "trips": "行程",
+  "@trips": {
+    "description": "短文本用于行程（移动设备）"
+  },
+  "completedTrips": "已完成行程",
+  "@completedTrips": {
+    "description": "已完成行程的长文本（桌面）"
+  },
+  "driver": "司机",
+  "@driver": {
+    "description": "短文本用于司机（移动设备）"
+  },
+  "activeDrivers": "活跃司机",
+  "@activeDrivers": {
+    "description": "活跃司机的长文本（桌面）"
+  },
+  "vehicles": "车辆",
+  "@vehicles": {
+    "description": "短文本用于车辆（移动设备）"
+  },
+  "activeVehicles": "活跃车辆",
+  "@activeVehicles": {
+    "description": "活跃车辆的长文本（桌面）"
+  },
+  "lastName": "姓",
+  "@lastName": {
+    "description": "姓氏文本"
+  },
+  "firstName": "名",
+  "@firstName": {
+    "description": "名字文本"
+  },
+  "vehicle": "车辆",
+  "@vehicle": {
+    "description": "车辆文本"
+  },
+  "tripsColumn": "行程",
+  "@tripsColumn": {
+    "description": "行程列文本"
+  },
+  "actions": "操作",
+  "@actions": {
+    "description": "操作文本"
+  },
+  "license": "许可证",
+  "@license": {
+    "description": "许可证文本"
+  },
+  "plate": "车牌",
+  "@plate": {
+    "description": "车牌文本"
+  },
+  "model": "型号",
+  "@model": {
+    "description": "型号文本"
+  },
+  "status": "状态",
+  "@status": {
+    "description": "状态文本"
+  },
+  "topMonthlyDrivers": "月度最佳司机",
+  "@topMonthlyDrivers": {
+    "description": "月度最佳司机标题"
+  },
+  "connectedDrivers": "已连接司机",
+  "@connectedDrivers": {
+    "description": "已连接司机标题"
+  },
+  "createBaseInZone": "在您想要的区域创建您的基地",
+  "@createBaseInZone": {
+    "description": "在区域中创建基地的标题"
+  },
+  "next": "下一步",
+  "@next": {
+    "description": "下一步按钮文本"
+  },
+  "pressNext": "按下一步",
+  "@pressNext": {
+    "description": "按下一步的消息"
+  },
+  "selectZone": "选择区域",
+  "@selectZone": {
+    "description": "选择区域的消息"
+  },
+  "enableDriversTitle": "启用司机",
+  "@enableDriversTitle": {
+    "description": "启用司机的标题"
+  },
+  "noDriversToShow": "没有可显示的司机。",
+  "@noDriversToShow": {
+    "description": "没有司机时的消息"
+  },
+  "noVehicle": "无车辆",
+  "@noVehicle": {
+    "description": "没有车辆时的文本"
+  },
+  "processingEnable": "正在处理启用...",
+  "@processingEnable": {
+    "description": "处理启用时的消息"
+  },
+  "enable": "启用",
+  "@enable": {
+    "description": "启用按钮文本"
+  },
+  "zoneLabel": "区域:",
+  "@zoneLabel": {
+    "description": "区域的标签"
+  },
+  "baseLabel": "基地:",
+  "@baseLabel": {
+    "description": "基地的标签"
+  }
+}
+

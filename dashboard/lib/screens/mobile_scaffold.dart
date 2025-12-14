@@ -1,5 +1,5 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:dashborad/constants/constants.dart';
+import 'package:transport_dashboard/constants/constants.dart';
 import 'package:flutter/material.dart';
 
 
@@ -62,7 +62,7 @@ class WelcomeBack extends StatelessWidget {
     
           FittedBox(
             fit: BoxFit.contain,
-            child: Text('BIENVENIDO A INRI REMISES', style: h4)
+            child: Text('BIENVENIDO AL DASHBOARD', style: h4)
             ),
     
           const SizedBox(height: 5), 
@@ -106,9 +106,10 @@ class _ImageCarPhone extends StatelessWidget {
                   child: const Center(          
                     child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 2),
-                    child: Image(
-                    image: AssetImage('assets/inri.png'),
-                    ),
+                  
+                    // child: Image(
+                    //   image: AssetImage('assets/logo.png'),
+                    // ),
                     ),
                   ),
             ),

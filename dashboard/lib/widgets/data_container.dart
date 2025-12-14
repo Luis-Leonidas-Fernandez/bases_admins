@@ -1,5 +1,6 @@
-import 'package:dashborad/constants/constants.dart';
-import 'package:dashborad/models/drivers.dart';
+import 'package:transport_dashboard/constants/constants.dart';
+import 'package:transport_dashboard/models/drivers.dart';
+import 'package:transport_dashboard/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -53,15 +54,15 @@ Widget _tableContent( BuildContext context,Size size, Data? data){
 
   return  DataTable(columns: [
      
-     DataColumn(label: Expanded(child: Text('APELLIDO', style: size.width < 858 ? h9 : h10))),
-     DataColumn(label: Expanded(child: Text('NOMBRE', style: size.width < 858 ? h9 : h10))),     
-     DataColumn(label: Expanded(child: Text('VEHICULO', style: size.width < 858 ? h9 : h10))),
-     DataColumn(label: Expanded(child: Text('VIAJES', style: size.width < 858 ? h9 : h10))),
-     DataColumn(label: Expanded(child: Text('ACCIONES', style: size.width < 858 ? h9 : h10))),
-     DataColumn(label: Expanded(child: Text('LICENCIA', style: size.width < 858 ? h9 : h10))),
-     DataColumn(label: Expanded(child: Text('PATENTE', style: size.width < 858 ? h9 : h10))),
-     DataColumn(label: Expanded(child: Text('MODELO', style: size.width < 858 ? h9 : h10))),
-     DataColumn(label: Expanded(child: Text('STATUS', style: size.width < 858 ? h9 : h10))),
+     DataColumn(label: Expanded(child: Text(AppLocalizations.of(context)?.lastName ?? 'APELLIDO', style: size.width < 858 ? h9 : h10))),
+     DataColumn(label: Expanded(child: Text(AppLocalizations.of(context)?.firstName ?? 'NOMBRE', style: size.width < 858 ? h9 : h10))),     
+     DataColumn(label: Expanded(child: Text(AppLocalizations.of(context)?.vehicle ?? 'VEHICULO', style: size.width < 858 ? h9 : h10))),
+     DataColumn(label: Expanded(child: Text(AppLocalizations.of(context)?.tripsColumn ?? 'VIAJES', style: size.width < 858 ? h9 : h10))),
+     DataColumn(label: Expanded(child: Text(AppLocalizations.of(context)?.actions ?? 'ACCIONES', style: size.width < 858 ? h9 : h10))),
+     DataColumn(label: Expanded(child: Text(AppLocalizations.of(context)?.license ?? 'LICENCIA', style: size.width < 858 ? h9 : h10))),
+     DataColumn(label: Expanded(child: Text(AppLocalizations.of(context)?.plate ?? 'PATENTE', style: size.width < 858 ? h9 : h10))),
+     DataColumn(label: Expanded(child: Text(AppLocalizations.of(context)?.model ?? 'MODELO', style: size.width < 858 ? h9 : h10))),
+     DataColumn(label: Expanded(child: Text(AppLocalizations.of(context)?.status ?? 'STATUS', style: size.width < 858 ? h9 : h10))),
     
       ], rows: alldrivers
       .map(

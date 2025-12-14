@@ -1,0 +1,188 @@
+{
+  "@@locale": "ko",
+  "appTitle": "교통 대시보드",
+  "@appTitle": {
+    "description": "애플리케이션 제목"
+  },
+  "welcome": "대시보드에 오신 것을 환영합니다",
+  "@welcome": {
+    "description": "환영 메시지"
+  },
+  "serviceTitle": "온라인 교통 서비스",
+  "@serviceTitle": {
+    "description": "서비스 부제목"
+  },
+  "loginTitle": "로그인",
+  "@loginTitle": {
+    "description": "로그인 제목"
+  },
+  "registerTitle": "회원가입",
+  "@registerTitle": {
+    "description": "회원가입 제목"
+  },
+  "login": "입력",
+  "@login": {
+    "description": "로그인 버튼 텍스트"
+  },
+  "register": "새 계정",
+  "@register": {
+    "description": "회원가입 버튼 텍스트"
+  },
+  "email": "이메일",
+  "@email": {
+    "description": "이메일 필드 플레이스홀더"
+  },
+  "password": "비밀번호",
+  "@password": {
+    "description": "비밀번호 필드 플레이스홀더"
+  },
+  "name": "이름",
+  "@name": {
+    "description": "이름 필드 플레이스홀더"
+  },
+  "forgotPassword": "비밀번호를 잊으셨나요?",
+  "@forgotPassword": {
+    "description": "비밀번호 찾기 링크"
+  },
+  "selectLanguage": "언어 선택",
+  "@selectLanguage": {
+    "description": "언어 선택기 제목"
+  },
+  "language": "언어",
+  "@language": {
+    "description": "언어 레이블"
+  },
+  "home": "홈",
+  "@home": {
+    "description": "홈 메뉴 텍스트"
+  },
+  "invoice": "청구서",
+  "@invoice": {
+    "description": "청구서 메뉴 텍스트"
+  },
+  "bases": "기지",
+  "@bases": {
+    "description": "기지 메뉴 텍스트"
+  },
+  "enableDrivers": "활성화",
+  "@enableDrivers": {
+    "description": "활성화 메뉴 텍스트"
+  },
+  "logout": "로그아웃",
+  "@logout": {
+    "description": "로그아웃 버튼 텍스트"
+  },
+  "trips": "여행",
+  "@trips": {
+    "description": "여행에 대한 짧은 텍스트（모바일）"
+  },
+  "completedTrips": "완료된 여행",
+  "@completedTrips": {
+    "description": "완료된 여행에 대한 긴 텍스트（데스크톱）"
+  },
+  "driver": "운전자",
+  "@driver": {
+    "description": "운전자에 대한 짧은 텍스트（모바일）"
+  },
+  "activeDrivers": "활성 운전자",
+  "@activeDrivers": {
+    "description": "활성 운전자에 대한 긴 텍스트（데스크톱）"
+  },
+  "vehicles": "차량",
+  "@vehicles": {
+    "description": "차량에 대한 짧은 텍스트（모바일）"
+  },
+  "activeVehicles": "활성 차량",
+  "@activeVehicles": {
+    "description": "활성 차량에 대한 긴 텍스트（데스크톱）"
+  },
+  "lastName": "성",
+  "@lastName": {
+    "description": "성에 대한 텍스트"
+  },
+  "firstName": "이름",
+  "@firstName": {
+    "description": "이름에 대한 텍스트"
+  },
+  "vehicle": "차량",
+  "@vehicle": {
+    "description": "차량에 대한 텍스트"
+  },
+  "tripsColumn": "여행",
+  "@tripsColumn": {
+    "description": "여행 열에 대한 텍스트"
+  },
+  "actions": "작업",
+  "@actions": {
+    "description": "작업에 대한 텍스트"
+  },
+  "license": "면허",
+  "@license": {
+    "description": "면허에 대한 텍스트"
+  },
+  "plate": "번호판",
+  "@plate": {
+    "description": "번호판에 대한 텍스트"
+  },
+  "model": "모델",
+  "@model": {
+    "description": "모델에 대한 텍스트"
+  },
+  "status": "상태",
+  "@status": {
+    "description": "상태에 대한 텍스트"
+  },
+  "topMonthlyDrivers": "월간 최고 운전자",
+  "@topMonthlyDrivers": {
+    "description": "월간 최고 운전자 제목"
+  },
+  "connectedDrivers": "연결된 운전자",
+  "@connectedDrivers": {
+    "description": "연결된 운전자 제목"
+  },
+  "createBaseInZone": "원하는 구역에 기지를 만드세요",
+  "@createBaseInZone": {
+    "description": "구역에 기지를 만드는 제목"
+  },
+  "next": "다음",
+  "@next": {
+    "description": "다음 버튼 텍스트"
+  },
+  "pressNext": "다음 누르기",
+  "@pressNext": {
+    "description": "다음 누르기 메시지"
+  },
+  "selectZone": "구역 선택",
+  "@selectZone": {
+    "description": "구역 선택 메시지"
+  },
+  "enableDriversTitle": "운전자 활성화",
+  "@enableDriversTitle": {
+    "description": "운전자 활성화 제목"
+  },
+  "noDriversToShow": "표시할 운전자가 없습니다.",
+  "@noDriversToShow": {
+    "description": "운전자가 없을 때 메시지"
+  },
+  "noVehicle": "차량 없음",
+  "@noVehicle": {
+    "description": "차량이 없을 때 텍스트"
+  },
+  "processingEnable": "활성화 처리 중...",
+  "@processingEnable": {
+    "description": "활성화 처리 중 메시지"
+  },
+  "enable": "활성화",
+  "@enable": {
+    "description": "활성화 버튼 텍스트"
+  },
+  "zoneLabel": "구역:",
+  "@zoneLabel": {
+    "description": "구역 레이블"
+  },
+  "baseLabel": "기지:",
+  "@baseLabel": {
+    "description": "기지 레이블"
+  }
+}
+

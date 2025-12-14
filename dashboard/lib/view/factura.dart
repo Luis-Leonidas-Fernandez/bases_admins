@@ -1,5 +1,5 @@
-import 'package:dashborad/widgets/all_invoice.dart';
-import 'package:dashborad/widgets/month_invoice.dart';
+import 'package:transport_dashboard/widgets/all_invoice.dart';
+import 'package:transport_dashboard/widgets/month_invoice.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 

@@ -1,4 +1,4 @@
-import 'package:dashborad/screens/screens.dart';
+import 'package:transport_dashboard/screens/screens.dart';
 import 'package:flutter/material.dart';
 
 class ResponsiveLayout extends StatelessWidget {

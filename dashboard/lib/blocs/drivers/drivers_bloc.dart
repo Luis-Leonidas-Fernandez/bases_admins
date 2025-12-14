@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:dashborad/blocs/blocs.dart';
-import 'package:dashborad/models/drivers.dart';
-import 'package:dashborad/service/drivers_base_service.dart';
+import 'package:transport_dashboard/blocs/blocs.dart';
+import 'package:transport_dashboard/models/drivers.dart';
+import 'package:transport_dashboard/service/drivers_base_service.dart';
 import 'package:equatable/equatable.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
@@ -76,46 +76,60 @@ class DriversBloc extends HydratedBloc<DriversEvent, DriversState> {
   }
 
   void getDriversAndBases() {
-    
     stopPeriodicTasck();
 
+    // Ejecutar inmediatamente la primera vez
+    _fetchDriversData();
+
+    // Luego iniciar el timer periódico
     timer = Timer.periodic(const Duration(seconds: 3), (_) async {
-
-      if (authBloc.state.admin == null) {
-          stopPeriodicTasck();
-          add(const OnClearStateEvent());
-           return;
-         }
-
-      
-        final DriversModel model = await driverBaseService.getDriversAndBase();   
-
-        //filtro los conductores dejando solo los que tiene el campo online en su estructura       
-
-        final all = model.data?.drivers ?? const <Driver>[];
-
-        // Con online (no null)
-        final withOnline = all.where((driver) => driver.online != null).toList();
-
-        // Sin online
-        final withoutOnline = all.where((driver) => driver.online == null).toList();
-
-        // DriversModel con online
-        final driversModelOnline = model.copyWith(
-        data: model.data?.copyWith(drivers: withOnline),
-        );
-
-        // DriversModel sin online
-        final enableDriverModel = model.copyWith(
-        data: model.data?.copyWith(drivers: withoutOnline),
-        );
-
-      if (model.ok == true) {
-        add(UpdateDriversModelEvent(driversModelOnline));
-        add(EnableDriversModelEvent(enableDriverModel));
-      }
-
+      _fetchDriversData();
     });
+  }
+
+  Future<void> _fetchDriversData() async {
+    if (authBloc.state.admin == null) {
+      stopPeriodicTasck();
+      add(const OnClearStateEvent());
+      return;
+    }
+
+    try {
+      final result = await driverBaseService.getDriversAndBase();
+      
+      // Si retorna null o no retorna nada (porque uid o base son null), no hacer nada
+      if (result == null || result is! DriversModel) return;
+
+      final DriversModel model = result;
+
+      //filtro los conductores dejando solo los que tiene el campo online en su estructura       
+      final all = model.data?.drivers ?? const <Driver>[];
+
+      // Con online (no null)
+      final withOnline = all.where((driver) => driver.online != null).toList();
+
+      // Sin online
+      final withoutOnline = all.where((driver) => driver.online == null).toList();
+
+      // DriversModel con online
+      final driversModelOnline = model.copyWith(
+      data: model.data?.copyWith(drivers: withOnline),
+      );
+
+      // DriversModel sin online
+      final enableDriverModel = model.copyWith(
+      data: model.data?.copyWith(drivers: withoutOnline),
+      );
+
+      // Actualizar el estado incluso si ok == false (para que la UI pueda manejar el caso)
+      // Si ok == false, aún actualizamos para evitar que se quede en loading infinito
+      add(UpdateDriversModelEvent(driversModelOnline));
+      add(EnableDriversModelEvent(enableDriverModel));
+    } catch (e) {
+      // Si hay error, imprimir para debugging pero no crashear
+      // ignore: avoid_print
+      print('Error fetching drivers: $e');
+    }
   }
 
   //aceptar viaje

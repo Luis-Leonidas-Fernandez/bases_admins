@@ -1,5 +1,5 @@
-import 'package:dashborad/api/config.dart';
-import 'package:dashborad/models/travels.dart';
+import 'package:transport_dashboard/api/config.dart';
+import 'package:transport_dashboard/models/travels.dart';
 import 'package:flutter/foundation.dart';
 
 class TravelHistoryService {

@@ -1,0 +1,188 @@
+{
+  "@@locale": "ja",
+  "appTitle": "交通ダッシュボード",
+  "@appTitle": {
+    "description": "アプリケーションのタイトル"
+  },
+  "welcome": "ダッシュボードへようこそ",
+  "@welcome": {
+    "description": "歓迎メッセージ"
+  },
+  "serviceTitle": "オンライン交通サービス",
+  "@serviceTitle": {
+    "description": "サービスサブタイトル"
+  },
+  "loginTitle": "ログイン",
+  "@loginTitle": {
+    "description": "ログインタイトル"
+  },
+  "registerTitle": "登録",
+  "@registerTitle": {
+    "description": "登録タイトル"
+  },
+  "login": "入力",
+  "@login": {
+    "description": "ログインボタンのテキスト"
+  },
+  "register": "新規アカウント",
+  "@register": {
+    "description": "登録ボタンのテキスト"
+  },
+  "email": "メールアドレス",
+  "@email": {
+    "description": "メールフィールドのプレースホルダー"
+  },
+  "password": "パスワード",
+  "@password": {
+    "description": "パスワードフィールドのプレースホルダー"
+  },
+  "name": "お名前",
+  "@name": {
+    "description": "名前フィールドのプレースホルダー"
+  },
+  "forgotPassword": "パスワードをお忘れですか？",
+  "@forgotPassword": {
+    "description": "パスワードを忘れた場合のリンク"
+  },
+  "selectLanguage": "言語を選択",
+  "@selectLanguage": {
+    "description": "言語選択のタイトル"
+  },
+  "language": "言語",
+  "@language": {
+    "description": "言語ラベル"
+  },
+  "home": "ホーム",
+  "@home": {
+    "description": "ホームメニューのテキスト"
+  },
+  "invoice": "請求書",
+  "@invoice": {
+    "description": "請求書メニューのテキスト"
+  },
+  "bases": "基地",
+  "@bases": {
+    "description": "基地メニューのテキスト"
+  },
+  "enableDrivers": "有効化",
+  "@enableDrivers": {
+    "description": "有効化メニューのテキスト"
+  },
+  "logout": "ログアウト",
+  "@logout": {
+    "description": "ログアウトボタンのテキスト"
+  },
+  "trips": "旅行",
+  "@trips": {
+    "description": "旅行の短いテキスト（モバイル）"
+  },
+  "completedTrips": "完了した旅行",
+  "@completedTrips": {
+    "description": "完了した旅行の長いテキスト（デスクトップ）"
+  },
+  "driver": "運転手",
+  "@driver": {
+    "description": "運転手の短いテキスト（モバイル）"
+  },
+  "activeDrivers": "アクティブな運転手",
+  "@activeDrivers": {
+    "description": "アクティブな運転手の長いテキスト（デスクトップ）"
+  },
+  "vehicles": "車両",
+  "@vehicles": {
+    "description": "車両の短いテキスト（モバイル）"
+  },
+  "activeVehicles": "アクティブな車両",
+  "@activeVehicles": {
+    "description": "アクティブな車両の長いテキスト（デスクトップ）"
+  },
+  "lastName": "姓",
+  "@lastName": {
+    "description": "姓のテキスト"
+  },
+  "firstName": "名",
+  "@firstName": {
+    "description": "名のテキスト"
+  },
+  "vehicle": "車両",
+  "@vehicle": {
+    "description": "車両のテキスト"
+  },
+  "tripsColumn": "旅行",
+  "@tripsColumn": {
+    "description": "旅行列のテキスト"
+  },
+  "actions": "操作",
+  "@actions": {
+    "description": "操作のテキスト"
+  },
+  "license": "ライセンス",
+  "@license": {
+    "description": "ライセンスのテキスト"
+  },
+  "plate": "プレート",
+  "@plate": {
+    "description": "プレートのテキスト"
+  },
+  "model": "モデル",
+  "@model": {
+    "description": "モデルのテキスト"
+  },
+  "status": "ステータス",
+  "@status": {
+    "description": "ステータスのテキスト"
+  },
+  "topMonthlyDrivers": "月間トップ運転手",
+  "@topMonthlyDrivers": {
+    "description": "月間トップ運転手のタイトル"
+  },
+  "connectedDrivers": "接続中の運転手",
+  "@connectedDrivers": {
+    "description": "接続中の運転手のタイトル"
+  },
+  "createBaseInZone": "好きなゾーンに基地を作成してください",
+  "@createBaseInZone": {
+    "description": "ゾーンに基地を作成するタイトル"
+  },
+  "next": "次へ",
+  "@next": {
+    "description": "次へボタンのテキスト"
+  },
+  "pressNext": "次へを押す",
+  "@pressNext": {
+    "description": "次へを押すメッセージ"
+  },
+  "selectZone": "ゾーンを選択",
+  "@selectZone": {
+    "description": "ゾーンを選択するメッセージ"
+  },
+  "enableDriversTitle": "運転手を有効化",
+  "@enableDriversTitle": {
+    "description": "運転手を有効化するタイトル"
+  },
+  "noDriversToShow": "表示する運転手がありません。",
+  "@noDriversToShow": {
+    "description": "運転手がいない場合のメッセージ"
+  },
+  "noVehicle": "車両なし",
+  "@noVehicle": {
+    "description": "車両がない場合のテキスト"
+  },
+  "processingEnable": "有効化を処理中...",
+  "@processingEnable": {
+    "description": "有効化処理中のメッセージ"
+  },
+  "enable": "有効化",
+  "@enable": {
+    "description": "有効化ボタンのテキスト"
+  },
+  "zoneLabel": "ゾーン:",
+  "@zoneLabel": {
+    "description": "ゾーンのラベル"
+  },
+  "baseLabel": "基地:",
+  "@baseLabel": {
+    "description": "基地のラベル"
+  }
+}
+

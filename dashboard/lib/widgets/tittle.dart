@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:transport_dashboard/l10n/app_localizations.dart';
 
 class Tittle extends StatelessWidget {
   
@@ -24,7 +25,7 @@ class Tittle extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10.0),
               child: Text(
-                'INICIAR SESION',
+                AppLocalizations.of(context)?.loginTitle ?? 'INICIAR SESION',
                 style: GoogleFonts.montserratAlternates(
                   fontSize: 60,
                   color: Colors.white,
@@ -33,12 +34,13 @@ class Tittle extends StatelessWidget {
               ),
             ),
           ),
-           Center(
-             child: Image(
-                    image: const AssetImage('assets/remis.png'),
-                    width: size.width < 1100 ? 200 : 300,
-                    ),
-           ),
+         
+           // Center(
+           //   child: Image(
+           //     image: const AssetImage('assets/logo.png'),
+           //     width: size.width < 1100 ? 200 : 300,
+           //   ),
+           // ),
         ],
       ),
     );

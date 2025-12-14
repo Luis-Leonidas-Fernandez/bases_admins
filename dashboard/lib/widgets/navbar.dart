@@ -1,5 +1,5 @@
-import 'package:dashborad/blocs/blocs.dart';
-import 'package:dashborad/constants/constants.dart';
+import 'package:transport_dashboard/blocs/blocs.dart';
+import 'package:transport_dashboard/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
